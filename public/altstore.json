@@ -251,5 +251,9 @@
       ]
     }
   ],
+  "description" : "This catalog contains apps that have been built by the App Fair Project, a non-commercial app marketplace.",
+  "iconURL" : "https://appfair.org/appfair-icon.png",
+  "name" : "The App Fair Project",
+  "subtitle" : "The free and open-source app catalog",
   "website" : "https://appfair.org"
 }
