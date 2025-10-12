@@ -5,6 +5,7 @@
 
       },
       "bundleIdentifier" : "org.appfair.app.Tune-Out",
+      "category" : "other",
       "developerName" : "The App Fair Project",
       "iconURL" : "https://raw.githubusercontent.com/appfair/Tune-Out/refs/tags/1.0.2/Darwin/Assets.xcassets/AppIcon.appiconset/AppIcon@3x.png",
       "localizedDescription" : "An internet radio player.",
@@ -61,6 +62,7 @@
           "buildVersion" : "14",
           "date" : "2025-10-12T04:00:00Z",
           "downloadURL" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/manifest.json",
+          "size" : 3605504,
           "version" : "1.0.2"
         }
       ]
@@ -114,6 +116,7 @@
         ]
       },
       "bundleIdentifier" : "org.appfair.app.Net-Skip",
+      "category" : "other",
       "developerName" : "The App Fair Project",
       "iconURL" : "https://raw.githubusercontent.com/appfair/Net-Skip/refs/tags/1.4.4/Darwin/Assets.xcassets/AppIcon.appiconset/appicon-iphone-60x60@3x.png",
       "localizedDescription" : "Net Skip is the App Fair's free and open-source web browser. It presents a minimal and tasteful browsing experience, resulting in the fastest web browsing experience available on any mobile device, anywhere.\n\nIn contrast with most other browsers on the market, Net Skip is best characterized by what it does *not* feature:\n\n  • No embedded advertising or tracking\n  • No cryptocurrency features\n  • No rewards programs\n  • No in-app purchases or subscriptions\n  • No telemetry, analytics, or user data collection\n  • No monetization whatsoever of the user of the app\n\nThe source code for Net Skip – along with all App Fair projects – is free and open-source, and is distributed under the GNU General Public License (GPL) 3.0. You can access the source for review and modification at https://github.com/Net-Skip/Net-Skip/. It uses the WebKit rendering engine, which is distributed under the GNU Lesser General Public License (LGPL) and whose source code is available at https://webkit.org/.\n\nNet Skip is part of the App Fair Project, a non-profit charity based in the Commonwealth of Massachusetts founded to create and maintain digital public goods in the form of mobile applications. Find out more about the App Fair Project at https://appfair.org and help us build our app marketplace by spreading the word about Net Skip and our other project apps.",
@@ -172,6 +175,7 @@
           "buildVersion" : "212",
           "date" : "2025-10-12T04:00:00Z",
           "downloadURL" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/manifest.json",
+          "size" : 4550656,
           "version" : "1.4.4"
         }
       ]
@@ -181,6 +185,7 @@
 
       },
       "bundleIdentifier" : "org.appfair.app.SkipNotes",
+      "category" : "other",
       "developerName" : "The App Fair Project",
       "iconURL" : "https://raw.githubusercontent.com/appfair/Skip-Notes/refs/tags/0.8.5/Darwin/Assets.xcassets/AppIcon.appiconset/AppIcon@3x.png",
       "localizedDescription" : "Skip Notes lets you keep a list of secure notes on your device.",
@@ -246,6 +251,7 @@
           "buildVersion" : "42",
           "date" : "2025-10-12T04:00:00Z",
           "downloadURL" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/manifest.json",
+          "size" : 8627200,
           "version" : "0.8.5"
         }
       ]
