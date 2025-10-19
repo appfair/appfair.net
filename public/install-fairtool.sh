@@ -51,7 +51,11 @@ else
 fi
 
 # Ensure PATH is updated
-if ! echo "$PATH" | grep -q "$BIN_DIR"; then
+if [ "$GITHUB_ACTIONS" = "true" ]; then
+    # running froma GitHub workflow; just update GITHUB_PATH
+    echo "$BIN_DIR" >> "$GITHUB_PATH"
+    echo "Added $BIN_DIR to GITHUB_PATH"
+elif ! echo "$PATH" | grep -q "$BIN_DIR"; then
   SHELL_RC=""
   case "$SHELL" in
     *bash) SHELL_RC="$HOME/.bashrc" ;;
