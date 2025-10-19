@@ -74,4 +74,5 @@ echo "Cleaning up..."
 rm -rf "$UNZIP_DIR"
 
 echo "${TOOL_NAME} installed successfully!"
-echo "Try running: $BIN_NAME --help"
+# echo "Try running: $BIN_NAME --help"
+$BIN_DIR/$TOOL_NAME welcome
