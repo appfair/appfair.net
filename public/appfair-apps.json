@@ -1,21 +1,17 @@
 {
-    "catalogs": {
-        "altstore": {
-        },
-        "froid": {
-        }
-    },
     "apps": [
         {
             "token": "Net-Skip",
             "ios": {
-                "bundleId": "org.appfair.app.Net-Skip"
+                "bundleId": "org.appfair.app.Net-Skip",
+                "appleItemId": "1640618584"
             }
         },
         {
             "token": "Skip-Notes",
             "ios": {
-                "bundleId": "org.appfair.app.SkipNotes"
+                "bundleId": "org.appfair.app.SkipNotes",
+                "appleItemId": "6740916318"
             },
             "android": {
                 "appid": "org.appfair.app.SkipNotes"
@@ -24,11 +20,44 @@
         {
             "token": "Tune-Out",
             "ios": {
-                "bundleId": "org.appfair.app.Tune-Out"
+                "bundleId": "org.appfair.app.Tune-Out",
+                "appleItemId": "1639901758"
             },
             "android": {
                 "appid": "org.appfair.app.Tune_Out"
             }
         }
-    ]
+    ],
+    "catalogs": {
+        "altstore": {
+            "name": "The App Fair Project",
+            "subtitle": "The free and open-source app catalog",
+            "description": "This catalog contains apps that have been built by the App Fair Project, a non-commercial universal app marketplace.",
+            "iconURL": "https://appfair.net/appfair-icon.png",
+            "headerURL": null,
+            "website": "https://appfair.org",
+            "fediUsername": "appfair",
+            "patreonURL": null,
+            "tintColor": null,
+            "featuredApps": null,
+            "news": null,
+            "apps": []
+        },
+        "froid": {
+            "name": {
+                "en-US": "The App Fair Project"
+            },
+            "icon": "https://appfair.net/appfair-icon.png",
+            "address": "https://appfair.net/fdroid/repo",
+            "webBaseUrl": "https://appfair.net",
+            "description": {
+                "en-US": "This catalog contains apps that have been built by the App Fair Project, a non-commercial universal app marketplace."
+            },
+            "mirrors": null,
+            "timestamp": 0,
+            "antiFeatures": null,
+            "categories": null,
+            "releaseChannels": null
+        }
+    }
 }
