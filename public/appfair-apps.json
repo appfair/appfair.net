@@ -47,9 +47,15 @@
             "name": {
                 "en-US": "The App Fair Project"
             },
-            "icon": "https://appfair.net/appfair-icon.png",
+            "icon": {
+                "en-US": {
+                    "name": "/icons/appfair-icon.png",
+                    "sha256": "c29696935536758cda40098a79c24b1470186d1a16c82f38424ec6213999c4e0",
+                    "size": 17243
+                }
+            },
             "address": "https://appfair.net/fdroid/repo",
-            "webBaseUrl": "https://appfair.net",
+            "webBaseUrl": null,
             "description": {
                 "en-US": "This catalog contains apps that have been built by the App Fair Project, a non-commercial universal app marketplace."
             },
