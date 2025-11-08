@@ -1,0 +1,34 @@
+{
+    "catalogs": {
+        "altstore": {
+        },
+        "froid": {
+        }
+    },
+    "apps": [
+        {
+            "token": "Net-Skip",
+            "ios": {
+                "bundleId": "org.appfair.app.Net-Skip"
+            }
+        },
+        {
+            "token": "Skip-Notes",
+            "ios": {
+                "bundleId": "org.appfair.app.SkipNotes"
+            },
+            "android": {
+                "appid": "org.appfair.app.SkipNotes"
+            }
+        },
+        {
+            "token": "Tune-Out",
+            "ios": {
+                "bundleId": "org.appfair.app.Tune-Out"
+            },
+            "android": {
+                "appid": "org.appfair.app.Tune_Out"
+            }
+        }
+    ]
+}
