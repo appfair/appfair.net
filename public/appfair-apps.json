@@ -36,7 +36,7 @@
             "iconURL": "https://appfair.net/appfair-icon.png",
             "headerURL": null,
             "website": "https://appfair.org",
-            "fediUsername": "appfair",
+            "fediUsername": null,
             "patreonURL": null,
             "tintColor": null,
             "featuredApps": null,
@@ -54,7 +54,7 @@
                     "size": 17243
                 }
             },
-            "address": "https://appfair.net/fdroid/repo",
+            "address": "https://api.appfair.net/fdroid/repo/",
             "webBaseUrl": null,
             "description": {
                 "en-US": "This catalog contains apps that have been built by the App Fair Project, a non-commercial universal app marketplace."

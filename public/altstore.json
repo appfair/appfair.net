@@ -273,7 +273,6 @@
     }
   ],
   "description" : "This catalog contains apps that have been built by the App Fair Project, a non-commercial universal app marketplace.",
-  "fediUsername" : "appfair",
   "iconURL" : "https://appfair.net/appfair-icon.png",
   "name" : "The App Fair Project",
   "subtitle" : "The free and open-source app catalog",
