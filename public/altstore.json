@@ -1,0 +1,265 @@
+{
+  "apps" : [
+    {
+      "appPermissions" : {
+
+      },
+      "bundleIdentifier" : "org.appfair.app.Tune-Out",
+      "category" : "other",
+      "developerName" : "The App Fair Project",
+      "iconURL" : "https://raw.githubusercontent.com/appfair/Tune-Out/refs/tags/1.0.2/Darwin/Assets.xcassets/AppIcon.appiconset/AppIcon@3x.png",
+      "localizedDescription" : "An internet radio player.",
+      "marketplaceID" : "1639901758",
+      "name" : "TuneOut",
+      "screenshots" : {
+        "iphone" : [
+          "https://raw.githubusercontent.com/appfair/Tune-Out/refs/tags/1.0.2/Darwin/fastlane/screenshots/en-US/1_en-US.png",
+          "https://raw.githubusercontent.com/appfair/Tune-Out/refs/tags/1.0.2/Darwin/fastlane/screenshots/en-US/2_en-US.png",
+          "https://raw.githubusercontent.com/appfair/Tune-Out/refs/tags/1.0.2/Darwin/fastlane/screenshots/en-US/3_en-US.png",
+          "https://raw.githubusercontent.com/appfair/Tune-Out/refs/tags/1.0.2/Darwin/fastlane/screenshots/en-US/4_en-US.png",
+          "https://raw.githubusercontent.com/appfair/Tune-Out/refs/tags/1.0.2/Darwin/fastlane/screenshots/en-US/5_en-US.png"
+        ]
+      },
+      "subtitle" : "Stream internet radio",
+      "versions" : [
+        {
+          "assetURLs" : {
+            "0ed2ff2f-df2b-3506-a7da-a1882d85507d" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/0ed2ff2f-df2b-3506-a7da-a1882d85507d.ipa",
+            "1a92ee2b-ab08-3d8e-b0e0-fd412bc3d06c" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/1a92ee2b-ab08-3d8e-b0e0-fd412bc3d06c.ipa",
+            "1e1231fd-4122-3836-a757-9f71764824dd" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/1e1231fd-4122-3836-a757-9f71764824dd.ipa",
+            "226e341f-399a-3413-95a0-bdf6bc87f1e0" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/226e341f-399a-3413-95a0-bdf6bc87f1e0.ipa",
+            "26efbad0-8db4-3d0a-9758-05cee64ccb5e" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/26efbad0-8db4-3d0a-9758-05cee64ccb5e.ipa",
+            "37b584f2-e79e-3011-ae06-29f5e9f9978b" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/37b584f2-e79e-3011-ae06-29f5e9f9978b.ipa",
+            "445f9ac7-2b4c-32fa-9ff9-6b57b2e65d43" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/445f9ac7-2b4c-32fa-9ff9-6b57b2e65d43.ipa",
+            "481f6a05-690e-3eed-a569-253fec963d59" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/481f6a05-690e-3eed-a569-253fec963d59.ipa",
+            "49710d99-f400-39c9-8382-c233b0e16a60" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/49710d99-f400-39c9-8382-c233b0e16a60.ipa",
+            "4bbc3820-cb5d-3e1b-a90c-093657226535" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/4bbc3820-cb5d-3e1b-a90c-093657226535.ipa",
+            "4e432b45-d2b6-3c4b-a82b-e4d09080f016" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/4e432b45-d2b6-3c4b-a82b-e4d09080f016.ipa",
+            "51bc8ca2-ef2b-378e-8a29-c33504ac39c9" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/51bc8ca2-ef2b-378e-8a29-c33504ac39c9.ipa",
+            "53149151-589b-36e2-9ac7-299f3dc81de8" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/53149151-589b-36e2-9ac7-299f3dc81de8.ipa",
+            "56a9e39d-050d-37aa-8914-68b9cd41a2e2" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/56a9e39d-050d-37aa-8914-68b9cd41a2e2.ipa",
+            "6d3b0f63-9854-3189-9c99-44fca10c5992" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/6d3b0f63-9854-3189-9c99-44fca10c5992.ipa",
+            "6e8979e3-74d5-351f-8e44-c1e9509407af" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/6e8979e3-74d5-351f-8e44-c1e9509407af.ipa",
+            "783a7970-1342-327b-9421-484560446cf6" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/783a7970-1342-327b-9421-484560446cf6.ipa",
+            "7a5bc3b1-551c-37e4-bf04-e606be634f51" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/7a5bc3b1-551c-37e4-bf04-e606be634f51.ipa",
+            "7b871124-3584-3cef-b2ba-d8e3c0d4dfab" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/7b871124-3584-3cef-b2ba-d8e3c0d4dfab.ipa",
+            "819a706e-dd0a-328d-a932-bdf104f74cb0" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/819a706e-dd0a-328d-a932-bdf104f74cb0.ipa",
+            "a03b349d-96fc-3cd4-a25a-2e1cde0d3e2c" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/a03b349d-96fc-3cd4-a25a-2e1cde0d3e2c.ipa",
+            "a213ea5e-a8aa-32c4-a8b0-908377b6b0c2" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/a213ea5e-a8aa-32c4-a8b0-908377b6b0c2.ipa",
+            "a6201761-e80c-3272-8f8f-6aba985c942f" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/a6201761-e80c-3272-8f8f-6aba985c942f.ipa",
+            "ad90ef5c-f1ed-3de4-8d13-589bc647ea64" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/ad90ef5c-f1ed-3de4-8d13-589bc647ea64.ipa",
+            "c02434e0-c9d6-34fe-87a4-9d8a74440014" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/c02434e0-c9d6-34fe-87a4-9d8a74440014.ipa",
+            "d17bf685-2c26-37c4-9f0f-1e7db9b42bbd" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/d17bf685-2c26-37c4-9f0f-1e7db9b42bbd.ipa",
+            "d46624f3-2a40-3d41-adc4-2be73ff51c8b" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/d46624f3-2a40-3d41-adc4-2be73ff51c8b.ipa",
+            "d96ab087-7b24-3f35-9295-a04a16a8a751" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/d96ab087-7b24-3f35-9295-a04a16a8a751.ipa",
+            "e7aa8c34-313b-3d1b-a2f4-a82fca2a47c3" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/e7aa8c34-313b-3d1b-a2f4-a82fca2a47c3.ipa",
+            "ea8e2139-7e8b-3f61-ad02-3ffbe13b32fb" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/ea8e2139-7e8b-3f61-ad02-3ffbe13b32fb.ipa",
+            "ee3bf422-a5e8-3ef1-b008-419685f37941" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/ee3bf422-a5e8-3ef1-b008-419685f37941.ipa",
+            "f844610d-8b86-32b5-99d5-a1793cbaa16d" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/f844610d-8b86-32b5-99d5-a1793cbaa16d.ipa",
+            "manifest" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/manifest.json",
+            "signature" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/signature"
+          },
+          "buildVersion" : "14",
+          "date" : "2025-10-12T04:00:00Z",
+          "downloadURL" : "https://github.com/appfair/Tune-Out/releases/download/1.0.2/manifest.json",
+          "size" : 3605504,
+          "version" : "1.0.2"
+        }
+      ]
+    },
+    {
+      "appPermissions" : {
+        "entitlements" : [
+          {
+            "name" : "aps-environment"
+          },
+          {
+            "name" : "com.apple.developer.browser.app-installation"
+          },
+          {
+            "name" : "com.apple.developer.applesignin"
+          },
+          {
+            "name" : "com.apple.developer.web-browser"
+          },
+          {
+            "name" : "com.apple.developer.authentication-services.autofill-credential-provider"
+          },
+          {
+            "name" : "com.apple.security.application-groups"
+          },
+          {
+            "name" : "keychain-access-groups"
+          }
+        ],
+        "privacy" : [
+          {
+            "name" : "NSLocationWhenInUseUsageDescription",
+            "usageDescription" : "Websites you visit may request your location."
+          },
+          {
+            "name" : "NSMicrophoneUsageDescription",
+            "usageDescription" : "Net Skip uses your microphone to record and upload audio."
+          },
+          {
+            "name" : "NSFaceIDUsageDescription",
+            "usageDescription" : "Net Skip requires Face ID to access your saved passwords and payment methods."
+          },
+          {
+            "name" : "NSCameraUsageDescription",
+            "usageDescription" : "Net Skip uses your camera to scan QR codes and take photos and video."
+          },
+          {
+            "name" : "NSPhotoLibraryAddUsageDescription",
+            "usageDescription" : "This lets you save photos."
+          }
+        ]
+      },
+      "bundleIdentifier" : "org.appfair.app.Net-Skip",
+      "category" : "other",
+      "developerName" : "The App Fair Project",
+      "iconURL" : "https://raw.githubusercontent.com/appfair/Net-Skip/refs/tags/1.4.4/Darwin/Assets.xcassets/AppIcon.appiconset/appicon-iphone-60x60@3x.png",
+      "localizedDescription" : "Net Skip is the App Fair's free and open-source web browser. It presents a minimal and tasteful browsing experience, resulting in the fastest web browsing experience available on any mobile device, anywhere.\n\nIn contrast with most other browsers on the market, Net Skip is best characterized by what it does *not* feature:\n\n  • No embedded advertising or tracking\n  • No cryptocurrency features\n  • No rewards programs\n  • No in-app purchases or subscriptions\n  • No telemetry, analytics, or user data collection\n  • No monetization whatsoever of the user of the app\n\nThe source code for Net Skip – along with all App Fair projects – is free and open-source, and is distributed under the GNU General Public License (GPL) 3.0. You can access the source for review and modification at https://github.com/Net-Skip/Net-Skip/. It uses the WebKit rendering engine, which is distributed under the GNU Lesser General Public License (LGPL) and whose source code is available at https://webkit.org/.\n\nNet Skip is part of the App Fair Project, a non-profit charity based in the Commonwealth of Massachusetts founded to create and maintain digital public goods in the form of mobile applications. Find out more about the App Fair Project at https://appfair.org and help us build our app marketplace by spreading the word about Net Skip and our other project apps.",
+      "marketplaceID" : "1640618584",
+      "name" : "NetSkip",
+      "screenshots" : {
+        "iphone" : [
+          "https://raw.githubusercontent.com/appfair/Net-Skip/refs/tags/1.4.4/Darwin/fastlane/screenshots/en-US/0_APP_IPHONE_55_0.png",
+          "https://raw.githubusercontent.com/appfair/Net-Skip/refs/tags/1.4.4/Darwin/fastlane/screenshots/en-US/0_APP_IPHONE_65_0.png",
+          "https://raw.githubusercontent.com/appfair/Net-Skip/refs/tags/1.4.4/Darwin/fastlane/screenshots/en-US/1_APP_IPHONE_65_1.png",
+          "https://raw.githubusercontent.com/appfair/Net-Skip/refs/tags/1.4.4/Darwin/fastlane/screenshots/en-US/2_APP_IPHONE_65_2.png",
+          "https://raw.githubusercontent.com/appfair/Net-Skip/refs/tags/1.4.4/Darwin/fastlane/screenshots/en-US/3_APP_IPHONE_65_3.png",
+          "https://raw.githubusercontent.com/appfair/Net-Skip/refs/tags/1.4.4/Darwin/fastlane/screenshots/en-US/4_APP_IPHONE_65_4.png",
+          "https://raw.githubusercontent.com/appfair/Net-Skip/refs/tags/1.4.4/Darwin/fastlane/screenshots/en-US/5_APP_IPHONE_65_5.png"
+        ]
+      },
+      "subtitle" : "A humane web browser",
+      "versions" : [
+        {
+          "assetURLs" : {
+            "11f35ea0-768f-3ee3-9ce2-7ba2cfb3edb4" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/11f35ea0-768f-3ee3-9ce2-7ba2cfb3edb4.ipa",
+            "22252b2e-5838-3f77-9ab4-2e26790d220d" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/22252b2e-5838-3f77-9ab4-2e26790d220d.ipa",
+            "35415a9c-2746-36cb-a853-f2ebe34eb3b6" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/35415a9c-2746-36cb-a853-f2ebe34eb3b6.ipa",
+            "3cd79b6c-2ac9-335a-a5ba-5276e0648d99" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/3cd79b6c-2ac9-335a-a5ba-5276e0648d99.ipa",
+            "4886b162-745b-3bb7-a1f4-3564148d306f" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/4886b162-745b-3bb7-a1f4-3564148d306f.ipa",
+            "5e012a73-8b7a-3439-96fc-e9c98f8a5fa5" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/5e012a73-8b7a-3439-96fc-e9c98f8a5fa5.ipa",
+            "66c68b51-e451-3ce1-8627-02648d9063fa" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/66c68b51-e451-3ce1-8627-02648d9063fa.ipa",
+            "6cc4e784-26df-3ef9-9884-88b4b449cf41" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/6cc4e784-26df-3ef9-9884-88b4b449cf41.ipa",
+            "768148ac-4fe4-37a4-b0a6-d858c3d71489" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/768148ac-4fe4-37a4-b0a6-d858c3d71489.ipa",
+            "784cc744-97be-33e0-8b9b-0ba684db8997" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/784cc744-97be-33e0-8b9b-0ba684db8997.ipa",
+            "7cc69168-29c5-37ea-a202-79437e9c8d77" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/7cc69168-29c5-37ea-a202-79437e9c8d77.ipa",
+            "80316bf2-e59f-3f67-9a7a-499a834f75a3" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/80316bf2-e59f-3f67-9a7a-499a834f75a3.ipa",
+            "80482f26-e06c-3639-8157-3e546ba528ca" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/80482f26-e06c-3639-8157-3e546ba528ca.ipa",
+            "974cadbc-afc6-3ac5-9f59-9b1bd079d86e" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/974cadbc-afc6-3ac5-9f59-9b1bd079d86e.ipa",
+            "98de2ca3-eb3b-3cd0-bcad-2cc7cd4e4e00" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/98de2ca3-eb3b-3cd0-bcad-2cc7cd4e4e00.ipa",
+            "ad008562-d86a-3700-b1b8-6c1832785fb2" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/ad008562-d86a-3700-b1b8-6c1832785fb2.ipa",
+            "bf26e8a6-6e3a-3c25-9781-26e9f2cd96b3" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/bf26e8a6-6e3a-3c25-9781-26e9f2cd96b3.ipa",
+            "bf7bd4a4-adc6-3097-a632-7dbc10952775" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/bf7bd4a4-adc6-3097-a632-7dbc10952775.ipa",
+            "c1740fac-4a2a-3da9-86bb-4d21e2a6ffa3" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/c1740fac-4a2a-3da9-86bb-4d21e2a6ffa3.ipa",
+            "c57d25a6-7b20-3c2c-809c-b8d2d8441812" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/c57d25a6-7b20-3c2c-809c-b8d2d8441812.ipa",
+            "c8c44971-3f05-3b07-82a6-bdb5e46949b4" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/c8c44971-3f05-3b07-82a6-bdb5e46949b4.ipa",
+            "cb362711-a91b-3e64-91d1-8acce7b20a8c" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/cb362711-a91b-3e64-91d1-8acce7b20a8c.ipa",
+            "cc202fb7-f33e-34d6-8e75-10dcf30648a5" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/cc202fb7-f33e-34d6-8e75-10dcf30648a5.ipa",
+            "cdac8674-884c-3c2f-a5e6-7f6bcafdcfc6" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/cdac8674-884c-3c2f-a5e6-7f6bcafdcfc6.ipa",
+            "d399e732-8514-3408-a827-4a2cae1e0160" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/d399e732-8514-3408-a827-4a2cae1e0160.ipa",
+            "d6309a5e-c527-386a-8751-3d06d0c2ee3b" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/d6309a5e-c527-386a-8751-3d06d0c2ee3b.ipa",
+            "e29a1003-2c30-33bc-a73d-18ac8ab6860b" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/e29a1003-2c30-33bc-a73d-18ac8ab6860b.ipa",
+            "e657d27a-d106-3853-b849-7f1292af9ae6" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/e657d27a-d106-3853-b849-7f1292af9ae6.ipa",
+            "f878618e-0995-39cd-b5ca-9052e11594b9" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/f878618e-0995-39cd-b5ca-9052e11594b9.ipa",
+            "fae66d02-3b9b-30b3-9b71-61b798dc75e1" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/fae66d02-3b9b-30b3-9b71-61b798dc75e1.ipa",
+            "fcc86269-0348-3ee2-ba24-d6d9686ba7c1" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/fcc86269-0348-3ee2-ba24-d6d9686ba7c1.ipa",
+            "ff98dcb5-01ae-35c5-8e28-967ef051ebd6" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/ff98dcb5-01ae-35c5-8e28-967ef051ebd6.ipa",
+            "manifest" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/manifest.json",
+            "signature" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/signature"
+          },
+          "buildVersion" : "212",
+          "date" : "2025-10-12T04:00:00Z",
+          "downloadURL" : "https://github.com/appfair/Net-Skip/releases/download/1.4.4/manifest.json",
+          "size" : 4550656,
+          "version" : "1.4.4"
+        }
+      ]
+    },
+    {
+      "appPermissions" : {
+
+      },
+      "bundleIdentifier" : "org.appfair.app.SkipNotes",
+      "category" : "other",
+      "developerName" : "The App Fair Project",
+      "iconURL" : "https://raw.githubusercontent.com/appfair/Skip-Notes/refs/tags/0.8.5/Darwin/Assets.xcassets/AppIcon.appiconset/AppIcon@3x.png",
+      "localizedDescription" : "Skip Notes lets you keep a list of secure notes on your device.",
+      "marketplaceID" : "6740916318",
+      "name" : "SkipNotes",
+      "screenshots" : {
+        "iphone" : [
+          "https://raw.githubusercontent.com/appfair/Skip-Notes/refs/tags/0.8.5/Darwin/fastlane/screenshots/en-US/1_en-US.png",
+          "https://raw.githubusercontent.com/appfair/Skip-Notes/refs/tags/0.8.5/Darwin/fastlane/screenshots/en-US/2_en-US.png"
+        ]
+      },
+      "subtitle" : "Simple and secure notes",
+      "versions" : [
+        {
+          "assetURLs" : {
+            "026b3181-54da-3143-a8a5-b0015da16844" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/026b3181-54da-3143-a8a5-b0015da16844.ipa",
+            "03796c35-3697-317f-bc9c-126738b62858" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/03796c35-3697-317f-bc9c-126738b62858.ipa",
+            "088e8e7e-9a32-391e-b653-f27dd7be479c" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/088e8e7e-9a32-391e-b653-f27dd7be479c.ipa",
+            "13a44266-e3a4-356f-af8f-4b9b156fcf40" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/13a44266-e3a4-356f-af8f-4b9b156fcf40.ipa",
+            "20206dc2-5171-3363-a85a-5a8e4c6b1c01" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/20206dc2-5171-3363-a85a-5a8e4c6b1c01.ipa",
+            "2d67cac9-607c-3034-953b-3732e96faf21" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/2d67cac9-607c-3034-953b-3732e96faf21.ipa",
+            "331c131b-05c4-3b10-a55a-db4fb04adab6" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/331c131b-05c4-3b10-a55a-db4fb04adab6.ipa",
+            "348bb5bb-1eb9-3d17-b84d-39b6aa9475fe" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/348bb5bb-1eb9-3d17-b84d-39b6aa9475fe.ipa",
+            "3ceab463-80b5-3fa0-b800-90881db161fc" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/3ceab463-80b5-3fa0-b800-90881db161fc.ipa",
+            "40ba13fc-8d3a-37fe-bdd1-72164af8d25b" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/40ba13fc-8d3a-37fe-bdd1-72164af8d25b.ipa",
+            "466887da-b762-316b-8b56-ddf0ac7c5809" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/466887da-b762-316b-8b56-ddf0ac7c5809.ipa",
+            "471ba1e4-43bc-3e02-8c7c-85e1a3f52e6f" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/471ba1e4-43bc-3e02-8c7c-85e1a3f52e6f.ipa",
+            "51fbf2fd-ef51-387f-9027-55c30fe62973" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/51fbf2fd-ef51-387f-9027-55c30fe62973.ipa",
+            "53cdda43-4587-3c0d-aeaf-25f4b03e0ed4" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/53cdda43-4587-3c0d-aeaf-25f4b03e0ed4.ipa",
+            "5526ed47-dbc7-3467-9cd1-fc688becf330" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/5526ed47-dbc7-3467-9cd1-fc688becf330.ipa",
+            "592aa308-2d3a-3708-8bc4-c6098dec7939" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/592aa308-2d3a-3708-8bc4-c6098dec7939.ipa",
+            "5a891777-4c48-3858-a5af-88f703195bd3" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/5a891777-4c48-3858-a5af-88f703195bd3.ipa",
+            "5af4f1f3-548b-312d-b707-01b8993c8d20" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/5af4f1f3-548b-312d-b707-01b8993c8d20.ipa",
+            "655dfb0d-1aec-3fe0-b894-0e4ca1c0dfbd" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/655dfb0d-1aec-3fe0-b894-0e4ca1c0dfbd.ipa",
+            "6f8777d7-39d9-3a3f-ba2c-e6defed4857a" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/6f8777d7-39d9-3a3f-ba2c-e6defed4857a.ipa",
+            "80fb5785-d8f8-3b5d-a90b-cba547534188" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/80fb5785-d8f8-3b5d-a90b-cba547534188.ipa",
+            "81031d69-90b4-304c-99b1-d6e78f6d512d" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/81031d69-90b4-304c-99b1-d6e78f6d512d.ipa",
+            "84d1a3f8-a06e-320c-9c2f-0d9286185d03" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/84d1a3f8-a06e-320c-9c2f-0d9286185d03.ipa",
+            "8995ddc1-d28e-3894-a384-79cc371dd846" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/8995ddc1-d28e-3894-a384-79cc371dd846.ipa",
+            "8e404083-3ce3-3016-acf2-070562d355d5" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/8e404083-3ce3-3016-acf2-070562d355d5.ipa",
+            "8f7b9e7c-0c59-3b73-a94b-01e3b3034f90" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/8f7b9e7c-0c59-3b73-a94b-01e3b3034f90.ipa",
+            "91b52c25-d3e6-3792-b680-d05062b0ea16" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/91b52c25-d3e6-3792-b680-d05062b0ea16.ipa",
+            "9303edbc-1583-38d1-bcbe-8ed3284b906e" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/9303edbc-1583-38d1-bcbe-8ed3284b906e.ipa",
+            "9768d92f-b222-323c-98c3-b460ffd48f91" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/9768d92f-b222-323c-98c3-b460ffd48f91.ipa",
+            "9d08fc9e-6dd2-3ae6-a3f2-348c07849b00" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/9d08fc9e-6dd2-3ae6-a3f2-348c07849b00.ipa",
+            "9f37dbf4-f471-3687-8023-624d8b7b2f34" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/9f37dbf4-f471-3687-8023-624d8b7b2f34.ipa",
+            "a1792295-3553-3280-af94-87164809038c" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/a1792295-3553-3280-af94-87164809038c.ipa",
+            "a46234fe-3802-3f87-a087-0f644e963b8a" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/a46234fe-3802-3f87-a087-0f644e963b8a.ipa",
+            "a9e860a4-8dd2-3e29-ac8d-334212603382" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/a9e860a4-8dd2-3e29-ac8d-334212603382.ipa",
+            "ad632d29-c1f0-3d93-bd4f-bf76f574c76f" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/ad632d29-c1f0-3d93-bd4f-bf76f574c76f.ipa",
+            "ad903bc6-7dd4-3e7b-ad9b-650d6d0c92ee" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/ad903bc6-7dd4-3e7b-ad9b-650d6d0c92ee.ipa",
+            "b343ceba-df04-318e-a0f1-d477e7a5e7ed" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/b343ceba-df04-318e-a0f1-d477e7a5e7ed.ipa",
+            "b5590592-6712-374c-94f3-95aa351ea0c1" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/b5590592-6712-374c-94f3-95aa351ea0c1.ipa",
+            "b9cbe945-b66b-3b5f-a93c-6b19a2dc4956" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/b9cbe945-b66b-3b5f-a93c-6b19a2dc4956.ipa",
+            "c259ae5f-44c5-3b8c-8121-c6b1306c975d" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/c259ae5f-44c5-3b8c-8121-c6b1306c975d.ipa",
+            "ceb25857-380c-3a5c-8a23-eeefe1493de1" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/ceb25857-380c-3a5c-8a23-eeefe1493de1.ipa",
+            "d0d6b811-b002-3a7f-bdcc-bd160dd89cc7" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/d0d6b811-b002-3a7f-bdcc-bd160dd89cc7.ipa",
+            "dc329089-80b4-329f-b6cc-4a1b2a8b27b1" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/dc329089-80b4-329f-b6cc-4a1b2a8b27b1.ipa",
+            "fda7159e-68c9-324a-ad49-6e585673a46b" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/fda7159e-68c9-324a-ad49-6e585673a46b.ipa",
+            "manifest" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/manifest.json",
+            "signature" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/signature"
+          },
+          "buildVersion" : "42",
+          "date" : "2025-10-12T04:00:00Z",
+          "downloadURL" : "https://github.com/appfair/Skip-Notes/releases/download/0.8.5/manifest.json",
+          "size" : 8627200,
+          "version" : "0.8.5"
+        }
+      ]
+    }
+  ],
+  "name" : "The App Fair Project",
+  "subtitle" : "The free and open-source app catalog",
+  "description" : "This catalog contains apps that have been built by the App Fair Project, a non-commercial app marketplace.",
+  "iconURL" : "https://appfair.net/appfair-icon.png",
+  "website" : "https://appfair.org"
+}
