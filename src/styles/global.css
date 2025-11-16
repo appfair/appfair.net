@@ -457,10 +457,17 @@ section h2 {
 }
 
 .description-section pre {
+  font-family: inherit; /* do not use monospace */
   line-height: 1.8;
   color: var(--color-text-primary);
+
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow-x: auto;
+  
+  /* not supported on mobile Safari until 26.0 */
   text-wrap: pretty;
-  font-family: inherit;
 }
 
 .permissions-grid {
