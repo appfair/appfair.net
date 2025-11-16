@@ -1,0 +1,44 @@
+---
+import Layout from './Layout.astro';
+import { apps } from "@/lib/apps";
+
+const appValues: AppInfo[] = Object.values(apps).sort(
+  (a, b) => (b.rank ?? 0) - (a.rank ?? 0)
+);
+---
+<Layout title="Apps List">
+  <main class="apps-index">
+    <div class="hero">
+      <h1>The App Fair Apps</h1>
+      <p>A list of all the apps currently available through the App Fair Project</p>
+    </div>
+
+    <div class="apps-container">
+      <div class="apps-grid">
+        {appValues.map((app) => (
+          // TODO: we could pre-fetch with the attribute: data-astro-prefetch="hover"
+          // see: https://docs.astro.build/en/guides/prefetch/
+          // we would want to assess how much JS that adds to the page and any other overhead
+          <a href={`app/${app.token}`} class="app-card">
+            <div class="app-icon">
+              <img src={app.ios?.appInfo?.iconURL} alt={`${app.ios?.appInfo?.name} icon`} />
+            </div>
+            <div class="app-info">
+              <h2>{app.ios?.appInfo?.name}</h2>
+              <p class="app-subtitle">{app.ios?.appInfo?.subtitle}</p>
+              <div class="app-meta">
+                <span class="category">{app.ios?.appInfo?.category}</span>
+                <span class="rating">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <!-- {app.rating} -->
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </main>
+</Layout>

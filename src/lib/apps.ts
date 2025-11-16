@@ -6,6 +6,7 @@ export interface AppInfo {
     token: string;
     ios?: DarwinAppInfo;
     android?: AndroidAppInfo;
+    rank?: int;
 }
 
 export interface DarwinAppInfo {
@@ -60,31 +61,35 @@ export interface AltAppVersion {
     size: int;
 }
 
-var altstoreApps: AltAppInfo[] = altstoreData.apps;
+const altstoreApps: AltAppInfo[] = altstoreData.apps;
 
-// merge the altstore app info into the app itself
-var allApps: AppInfo[] = appsData.apps;
+// index the AltAppInfo array by the bundleIdentifier
+const altstoreAppRecords: Record<string, AltAppInfo> = altstoreApps.reduce((acc, appInfo) => {
+    acc[appInfo.bundleIdentifier] = appInfo;
+    return acc;
+  }, {} as Record<string, AltAppInfo>);
 
-allApps.forEach((app: AppInfo) => {
-    var iosApp = app.ios;
-    if (iosApp === null) {
-        return;
-    }
-    
-    console.log(`searching for ${iosApp.bundleId} in ${altstoreApps.length} altstore apps…`);
-    var altStoreApp: AltAppInfo = altstoreApps.find(a => a.bundleIdentifier == iosApp.bundleId);
-    console.log(`found: ${altStoreApp}`);
+// merge the AltStore app info into the app itself
+const allApps: AppInfo[] = appsData.apps;
 
-    //app.ios.appInfo = null;
-    if (altStoreApp) {
-        iosApp.appInfo = altStoreApp;
-        console.log(`assigned: ${altStoreApp}`);
-        //app.ios.appInfo = altStoreApp;
-        app.ios = iosApp;
-        console.log(`matched: ${app.ios?.appInfo}`);
-    }
+allApps.forEach((appInfo, index) => {
+    // assign the rank as the index if it is not already set in the list
+    appInfo.rank = appInfo.rank ?? index;  
 });
 
-// TODO: merge the F-Droid app info into the app
+const allAppRecords: Record<string, AppInfo> = allApps.reduce((acc, appInfo) => {
+    // update the appInfo with the AltAppInfo
+    let iosInfo = appInfo.ios;
+    if (iosInfo != null) {
+        iosInfo.appInfo = altstoreAppRecords[iosInfo.bundleId];
+        //console.log(`iosInfo.appInfo for ${iosInfo.bundleId}: ${iosInfo.appInfo}`);
+        appInfo.ios = iosInfo;
+    }
+    //console.log(`appInfo.ios.appInfo: ${appInfo.ios.appInfo}`);
 
-export const apps: AppInfo[] = allApps;
+    // TODO: do the same with the fdroid index
+    acc[appInfo.token] = appInfo;
+    return acc;
+  }, {} as Record<string, AppInfo>);
+
+export const apps: Record<string, AppInfo> = allAppRecords;
