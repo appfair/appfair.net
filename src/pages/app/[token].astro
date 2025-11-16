@@ -42,7 +42,7 @@ const privacyPolicyURL = "https://appfair.org/privacy";
           <div class="app-icon-large">
             <img src={appIcon} alt={`${appName} icon`} />
           </div>
-          <div class="app-header-info">
+          <div class="app-header-info force-wrap">
             <h1>{appName}</h1>
             <p class="subtitle">{appSubtitle}</p>
             <!-- <div class="developer">{app.developer}</div> -->
@@ -95,7 +95,7 @@ const privacyPolicyURL = "https://appfair.org/privacy";
       </section>
 
       <!-- Permissions -->
-      <section class="permissions-section">
+      <section class="permissions-section force-wrap">
         <h2>Permissions</h2>
         <div class="permissions-grid">
           {iosInfo?.appPermissions?.privacy?.map((permission) => (
@@ -132,7 +132,7 @@ const privacyPolicyURL = "https://appfair.org/privacy";
       </section>
 
       <!-- Links -->
-      <section class="links-section">
+      <section class="links-section force-wrap">
         <h2>Developer Resources</h2>
         <div class="links-grid">
             <a href={sourceCodeURL} class="link-card" target="_blank" rel="noopener">

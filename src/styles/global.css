@@ -465,9 +465,16 @@ section h2 {
   word-wrap: break-word;
   overflow-wrap: break-word;
   overflow-x: auto;
-  
+ 
   /* not supported on mobile Safari until 26.0 */
   text-wrap: pretty;
+}
+
+.force-wrap {
+  /* Ensures extremely long strings (like URLs) break anywhere */
+  word-break: break-all;
+  /* Fallback/Standard for breaking if a word doesn't fit */
+  overflow-wrap: break-word;
 }
 
 .permissions-grid {
