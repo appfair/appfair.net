@@ -29,7 +29,7 @@ const tokenLower = token.toLowerCase();
 //console.log(`app.ios: ${app.ios}`);
 
 const iosInfo = app.ios?.appInfo;
-console.log(`iosInfo: ${iosInfo}`);
+// console.log(`iosInfo: ${iosInfo}`);
 
 //const fdroidInfo = app.fdroid?.appInfo; // TODO
 
@@ -62,13 +62,18 @@ const privacyPolicyURL = "https://appfair.org/privacy";
 
         <div class="app-stats-bar">
           <div class="stat">
-            <div class="stat-value">{app.ios?.appInfo?.versions[0]?.version} ({app.ios?.appInfo?.versions[0]?.buildVersion})</div>
-            <div class="stat-label">{localDate(app.ios?.appInfo?.versions[0]?.date, lang, 'medium')}</div>
+            <div class="stat-value">{localDate(app.ios?.appInfo?.versions[0]?.date, lang, 'medium')}</div>
+            <div class="stat-label">{t('app.releasedate')}</div>
           </div>
           <div class="stat-divider"></div>
-            <div class="stat">
+          <div class="stat">
+            <div class="stat-value">{app.ios?.appInfo?.versions[0]?.version} ({app.ios?.appInfo?.versions[0]?.buildVersion})</div>
+            <div class="stat-label">{t('app.version')}</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
               <div class="stat-value">{formatSize(app.ios?.appInfo?.versions[0]?.size, lang)}</div>
-              <div class="stat-label">Size</div>
+              <div class="stat-label">{t('app.size')}</div>
             </div>
           </div>
 
@@ -100,7 +105,7 @@ const privacyPolicyURL = "https://appfair.org/privacy";
 
       <!-- Screenshots -->
       <section class="screenshots-section">
-        <h2>Screenshots</h2>
+        <h2>{t('app.screenshots')}</h2>
         <div class="screenshots-scroll">
           {iosInfo?.screenshots?.iphone?.map((screenshot, index) => (
             <div class="screenshot-item">
@@ -112,13 +117,13 @@ const privacyPolicyURL = "https://appfair.org/privacy";
 
       <!-- Description -->
       <section class="description-section">
-        <h2>About This App</h2>
+        <h2>{t('app.about')}</h2>
         <pre>{appDescription}</pre>
       </section>
 
       <!-- Permissions -->
       <section class="permissions-section force-wrap">
-        <h2>Permissions</h2>
+        <h2>{t('app.permissions')}</h2>
         <div class="permissions-grid">
           {iosInfo?.appPermissions?.privacy?.map((permission) => (
             <div class="permission-card">
@@ -135,7 +140,7 @@ const privacyPolicyURL = "https://appfair.org/privacy";
             </div>
           )) || <p>None</p>}
         </div>
-        <h2>Entitlements</h2>
+        <h2>{t('app.entitlements')}</h2>
         <div class="permissions-grid">
           {iosInfo?.appPermissions?.entitlements?.map((entitlement) => (
             <div class="permission-card">
@@ -155,7 +160,7 @@ const privacyPolicyURL = "https://appfair.org/privacy";
 
       <!-- Links -->
       <section class="links-section force-wrap">
-        <h2>Developer Resources</h2>
+        <h2>{t('app.devres')}</h2>
         <div class="links-grid">
             <a href={sourceCodeURL} class="link-card" target="_blank" rel="noopener">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -163,7 +168,7 @@ const privacyPolicyURL = "https://appfair.org/privacy";
                 <polyline points="8 6 2 12 8 18"></polyline>
               </svg>
               <div>
-                <h3>Source Code</h3>
+                <h3>{t('app.devres.source')}</h3>
                 <p>View on GitHub</p>
               </div>
             </a>
@@ -173,8 +178,8 @@ const privacyPolicyURL = "https://appfair.org/privacy";
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
               </svg>
               <div>
-                <h3>Privacy Policy</h3>
-                <p>Learn about data protection</p>
+                <h3>{t('app.privacy')}</h3>
+                <p>{t('app.privacy.learn')}</p>
               </div>
             </a>
         </div>

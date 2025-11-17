@@ -7,7 +7,12 @@ export const languages = {
 
 export const defaultLang = 'en';
 
-export const ui = {
+const ui: Record<String, Record<keyof typeof languages, String>> = {
+    'XXX': {
+        'en': 'XXX',
+        'fr': 'XXX',
+        'es': 'XXX',
+    },
     'nav.home': {
         'en': 'Home',
         'fr': 'Accueil',
@@ -17,6 +22,56 @@ export const ui = {
         'en': 'About',
         'fr': 'À propos',
         'es': 'Acerca de',
+    },
+    'app.releasedate': {
+        'en': 'Release Date',
+        //'fr': 'XXX',
+        //'es': 'XXX',
+    },
+    'app.version': {
+        'en': 'Version',
+        //'fr': 'XXX',
+        //'es': 'XXX',
+    },
+    'app.size': {
+        'en': 'Size',
+        //'fr': 'XXX',
+        //'es': 'XXX',
+    },
+    'app.about': {
+        'en': 'About This App',
+        //'fr': 'XXX',
+        //'es': 'XXX',
+    },
+    'app.devres': {
+        'en': 'Developer Resources',
+        //'fr': 'XXX',
+        //'es': 'XXX',
+    },
+    'app.devres.source': {
+        'en': 'Source Code',
+        //'fr': 'XXX',
+        //'es': 'XXX',
+    },
+    'app.privacy': {
+        'en': 'Privacy Policy',
+        //'fr': 'XXX',
+        //'es': 'XXX',
+    },
+    'app.privacy.learn': {
+        'en': 'Learn about data protection',
+        //'fr': 'XXX',
+        //'es': 'XXX',
+    },
+    'app.permissions': {
+        'en': 'Permissions',
+        //'fr': 'XXX',
+        //'es': 'XXX',
+    },
+    'app.entitlements': {
+        'en': 'Entitlements',
+        //'fr': 'XXX',
+        //'es': 'XXX',
     },
     'footer.rights': {
         'en': 'All rights reserved',
@@ -68,7 +123,11 @@ export function getLangFromUrl(url: URL) {
 
 export function useTranslations(lang: keyof typeof languages) {
   return function t(key: keyof typeof ui[typeof defaultLang]) {
-    return ui[key][lang] || ui[key][defaultLang];
+    const dict = ui[key];
+    if (dict == null) {
+        return key;
+    }
+    return dict[lang] || dict[defaultLang];
   }
 }
 
