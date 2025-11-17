@@ -1,7 +1,7 @@
 ---
 import Layout from './Layout.astro';
 import { apps, type AppInfo } from "@/lib/apps";
-import { getLangFromUrl, useTranslations } from '@/lib/i18n';
+import { getLangFromUrl, useTranslations, localDate, formatSize } from '@/lib/i18n';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -60,8 +60,19 @@ const privacyPolicyURL = "https://appfair.org/privacy";
           </div>
         </div>
 
-        <!-- <div class="app-stats-bar">
+        <div class="app-stats-bar">
           <div class="stat">
+            <div class="stat-value">{app.ios?.appInfo?.versions[0]?.version} ({app.ios?.appInfo?.versions[0]?.buildVersion})</div>
+            <div class="stat-label">{localDate(app.ios?.appInfo?.versions[0]?.date, lang, 'medium')}</div>
+          </div>
+          <div class="stat-divider"></div>
+            <div class="stat">
+              <div class="stat-value">{formatSize(app.ios?.appInfo?.versions[0]?.size, lang)}</div>
+              <div class="stat-label">Size</div>
+            </div>
+          </div>
+
+          <!-- <div class="stat">
             <div class="stat-value">{app.rating}</div>
             <div class="stat-label">{app.reviews} Ratings</div>
           </div>
@@ -74,8 +85,8 @@ const privacyPolicyURL = "https://appfair.org/privacy";
           <div class="stat">
             <div class="stat-value">{app.size}</div>
             <div class="stat-label">Size</div>
-          </div>
-        </div> -->
+          </div> -->
+        </div>
 
         <div class="download-section">
             {appStoreLink && (

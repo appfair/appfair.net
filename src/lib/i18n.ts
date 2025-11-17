@@ -71,3 +71,63 @@ export function useTranslations(lang: keyof typeof languages) {
     return ui[key][lang] || ui[key][defaultLang];
   }
 }
+
+export function localDate(dateString?: string, locale: string, dateStyle: string): string {
+    const dt: Date = Date.parse(dateString);
+    if (dt != null) {
+        const briefDate = new Intl.DateTimeFormat(locale, {
+          dateStyle: dateStyle
+        }).format(dt);
+        return briefDate;
+    }
+    return dateString;
+}
+
+export function formatSize(bytes: number, locale: string): string {
+    if (bytes === 0) {
+        // Use a small fixed unit for zero bytes
+        return new Intl.NumberFormat(locale, {
+            style: 'unit',
+            unit: 'byte',
+            unitDisplay: 'narrow',
+        }).format(0);
+    }
+
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(1024));
+    
+    // The value in the new unit (1024-based)
+    const value = bytes / Math.pow(1024, i);
+    
+    // Determine the unit (we start at Bytes, which is not really a decimal unit)
+    let unit: 'byte' | 'kilobyte' | 'megabyte' | 'gigabyte';
+
+    switch (i) {
+        case 0:
+            unit = 'byte';
+            break;
+        case 1:
+            unit = 'kilobyte';
+            break;
+        case 2:
+            unit = 'megabyte';
+            break;
+        case 3:
+            unit = 'gigabyte';
+            break;
+        default:
+            // For TB/PB/etc., which the prompt didn't strictly require, 
+            // we'll just fall back to the largest unit or handle it gracefully.
+            // Since the requested max is GB, this branch is mostly a safeguard.
+            return `${value.toFixed(2)} ${sizes[i] || 'TB+'}`; 
+    }
+
+    // Use Intl.NumberFormat to handle locale-specific decimal separators and grouping
+    return new Intl.NumberFormat(locale, {
+        style: 'unit',
+        unit: unit,
+        unitDisplay: 'short', // 'KB' 'MB' 'GB'
+        maximumFractionDigits: 2, // Max two decimal places
+        minimumFractionDigits: value < 100 && value % 1 !== 0 ? 2 : 0, // Show decimals if value < 100
+    }).format(value);
+}
