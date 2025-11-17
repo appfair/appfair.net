@@ -1,6 +1,6 @@
 ---
 import Layout from './Layout.astro';
-import { apps } from "@/lib/apps";
+import { apps, type AppInfo } from "@/lib/apps";
 
 const appValues: AppInfo[] = Object.values(apps).sort(
   (a, b) => (b.rank ?? 0) - (a.rank ?? 0)

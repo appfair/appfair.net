@@ -558,6 +558,23 @@ section h2 {
   color: var(--color-text-secondary);
 }
 
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.lang-switcher a {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.lang-switcher a.active {
+  background: #34495e;
+}
+  
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .header-container {
