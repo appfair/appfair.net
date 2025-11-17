@@ -1,6 +1,10 @@
 ---
 import Layout from './Layout.astro';
 import { apps, type AppInfo } from "@/lib/apps";
+import { getLangFromUrl, useTranslations } from '@/lib/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const appValues: AppInfo[] = Object.values(apps).sort(
   (a, b) => (b.rank ?? 0) - (a.rank ?? 0)
@@ -9,8 +13,8 @@ const appValues: AppInfo[] = Object.values(apps).sort(
 <Layout title="Apps List">
   <main class="apps-index">
     <div class="hero">
-      <h1>The App Fair Apps</h1>
-      <p>A list of all the apps currently available through the App Fair Project</p>
+      <h1>{t('index.title')}</h1>
+      <p>{t('index.header')}</p>
     </div>
 
     <div class="apps-container">

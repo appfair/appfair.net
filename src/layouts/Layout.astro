@@ -52,7 +52,7 @@ const { title } = Astro.props;
           <nav class="main-nav">
             <!-- <a href="/">Apps</a> -->
             <!-- <a href="/about">About</a> -->
-          
+
           <div class="lang-switcher">
               <!-- <span>{t('language.select')}:</span> -->
               <a href="/en" class={lang === 'en' ? 'active' : ''}>EN</a>
@@ -87,16 +87,16 @@ const { title } = Astro.props;
                 <p>A curated collection of iOS and Android applications.</p>
               </div> -->
               <div class="footer-section">
-                <h3>Links</h3>
+                <h3>{t('footer.links')}</h3>
                 <ul>
-                  <li><a href="/">Browse Apps</a></li>
+                  <li><a href="/">{t('footer.browse')}</a></li>
                   <li><a href="https://appfair.org">{t('nav.about')}</a></li>
                 </ul>
               </div>
               <div class="footer-section">
-                <h3>Legal</h3>
+                <h3>{t('footer.legal')}</h3>
                 <ul>
-                  <li><a href="https://appfair.org/privacy">Privacy Policy</a></li>
+                  <li><a href="https://appfair.org/privacy">{t('footer.privacy')}</a></li>
                 </ul>
               </div>
             </div>

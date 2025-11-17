@@ -1,6 +1,10 @@
 ---
 import Layout from './Layout.astro';
 import { apps, type AppInfo } from "@/lib/apps";
+import { getLangFromUrl, useTranslations } from '@/lib/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 export async function getStaticPaths() {
     // the keys of the Record<string, AppInfo> are the app tokens

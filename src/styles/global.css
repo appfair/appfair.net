@@ -12,6 +12,7 @@
   --color-card-bg: #ffffff;
   --color-shadow: rgba(0, 0, 0, 0.1);
   --color-shadow-lg: rgba(0, 0, 0, 0.15);
+  --color-lang-switcher-active-background: #e8e8ed;
 }
 
 [data-theme="dark"] {
@@ -28,6 +29,7 @@
   --color-card-bg: #1c1c1e;
   --color-shadow: rgba(0, 0, 0, 0.3);
   --color-shadow-lg: rgba(0, 0, 0, 0.5);
+  --color-lang-switcher-active-background: #2c2c2e;
 }
 
 * {
@@ -571,9 +573,8 @@ section h2 {
 }
 
 .lang-switcher a.active {
-  background: #34495e;
+  background: var(--color-lang-switcher-active-background);
 }
-  
 
 /* Responsive Design */
 @media (max-width: 768px) {
