@@ -60,6 +60,25 @@ const privacyPolicyURL = "https://appfair.org/privacy";
           </div>
         </div>
 
+        <div style="text-align: center;">
+            <div xxxstyle="display: none;">
+                <input type="radio" name="platform" id="ios-radio" checked>
+                <input type="radio" name="platform" id="android-radio">
+            </div>
+            <div class="segmented-control">
+                <label for="ios-radio">iPhone</label>
+                <label for="android-radio">Android</label>
+            </div>
+        </div>
+
+        <div id="ios-content" class="platform-content">
+        iPhone!
+        </div>
+        
+        <div id="android-content" class="platform-content">
+        Android!
+        </div>
+        
         <div class="app-stats-bar">
           <div class="stat">
             <div class="stat-value">{localDate(app.ios?.appInfo?.versions[0]?.date, lang, 'medium')}</div>
@@ -91,7 +110,6 @@ const privacyPolicyURL = "https://appfair.org/privacy";
             <div class="stat-value">{app.size}</div>
             <div class="stat-label">Size</div>
           </div> -->
-        </div>
 
         <div class="download-section">
             {appStoreLink && (
@@ -134,12 +152,13 @@ const privacyPolicyURL = "https://appfair.org/privacy";
                 </svg>
               </div>
               <div class="permission-content">
-                <h3>{permission.name}</h3>
+                <h3>{t('app.permissions.ios.' + permission.name)}</h3>
                 <p>{permission.usageDescription}</p>
               </div>
             </div>
           )) || <p>None</p>}
         </div>
+        <h2 />
         <h2>{t('app.entitlements')}</h2>
         <div class="permissions-grid">
           {iosInfo?.appPermissions?.entitlements?.map((entitlement) => (
@@ -151,7 +170,8 @@ const privacyPolicyURL = "https://appfair.org/privacy";
                 </svg>
               </div>
               <div class="permission-content">
-                <h3>{entitlement.name}</h3>
+                <h3>{t('app.entitlements.ios.' + entitlement.name)}</h3>
+                <p>{entitlement.name}</p>
               </div>
             </div>
           )) || <p>None</p>}
@@ -186,4 +206,41 @@ const privacyPolicyURL = "https://appfair.org/privacy";
       </section>
     </div>
   </main>
+  <script>
+      // Detect platform from user agent
+      function detectPlatform() {
+          const ua = navigator.userAgent.toLowerCase();
+          if (ua.includes('iphone') || ua.includes('ipad') || ua.includes('ipod')) {
+              return 'ios';
+          } else if (ua.includes('android')) {
+              return 'android';
+          }
+          return 'ios'; // Default to iOS
+      }
+  
+      // Get stored preference or detect platform
+      function getInitialPlatform() {
+          const stored = localStorage.getItem('taskflow-platform');
+          return stored || detectPlatform();
+      }
+  
+      // Set initial selection
+      const platform = getInitialPlatform();
+      const radio = document.getElementById(platform + '-radio');
+      if (radio) {
+          radio.checked = true;
+          console.log(`checking: ${platform}`);
+      }
+  
+      // Save selection to localStorage when changed
+      const radios = document.querySelectorAll('input[name="platform"]');
+      radios.forEach(r => {
+          r.addEventListener('change', (e) => {
+              if (e.target.checked) {
+                  const platformValue = e.target.id.replace('-radio', '');
+                  localStorage.setItem('taskflow-platform', platformValue);
+              }
+          });
+      });
+  </script>
 </Layout>
