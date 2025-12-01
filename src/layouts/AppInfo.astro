@@ -34,7 +34,10 @@ const iosInfo = app.ios?.appInfo;
 //const fdroidInfo = app.fdroid?.appInfo; // TODO
 
 const appStoreLink = app.ios?.appleItemId ? `https://apps.apple.com/app/${tokenLower}/id${app.ios?.appleItemId}` : null;
+const altStoreLink = app.ios?.bundleId ? `https://api.altstore.io/source/appfair.net/altstore.json?app=${app.ios?.bundleId}` : null;
+
 const playStoreLink = app.android?.appid ? `https://play.google.com/store/apps/details?id=${app.android?.appid}` : null;
+const fdroidLink = app.android?.appid ? `https://api.appfair.net/fdroid/repo/` : null;
 
 const appName = iosInfo?.name ?? app.token;
 const appSubtitle = iosInfo?.subtitle ?? "";
@@ -59,7 +62,7 @@ const privacyPolicyURL = "https://appfair.org/privacy";
             <!-- <div class="developer">{app.developer}</div> -->
           </div>
         </div>
-
+<!-- 
         <div style="text-align: center;">
             <div xxxstyle="display: none;">
                 <input type="radio" name="platform" id="ios-radio" checked>
@@ -78,7 +81,7 @@ const privacyPolicyURL = "https://appfair.org/privacy";
         <div id="android-content" class="platform-content">
         Android!
         </div>
-        
+         -->
         <div class="app-stats-bar">
           <div class="stat">
             <div class="stat-value">{localDate(app.ios?.appInfo?.versions[0]?.date, lang, 'medium')}</div>
@@ -115,8 +118,16 @@ const privacyPolicyURL = "https://appfair.org/privacy";
             {appStoreLink && (
             <a href={appStoreLink} class="btn-download btn-ios"><img src="https://appfair.org/assets/badges/apple-app-store.svg" alt="Download on the Apple App Store"/></a>
             )}
+            {altStoreLink && (
+            <a href={altStoreLink} class="btn-download btn-ios"><img src="https://appfair.org/assets/badges/altstore.svg" alt="Download on AltStore"/></a>
+            )}
+        </div>
+        <div class="download-section">
             {playStoreLink && (
               <a href={playStoreLink} class="btn-download btn-android"><img src="https://appfair.org/assets/badges/google-play-store.svg" alt="Download on the Google Play Store"/></a>
+            )}
+            {fdroidLink && (
+              <a href={fdroidLink} class="btn-download btn-android"><img src="https://appfair.org/assets/badges/f-droid.svg" alt="Download on F-Droid"/></a>
             )}
         </div>
       </div>
