@@ -51,30 +51,30 @@
       "bundleIdentifier" : "org.appfair.app.Net-Skip",
       "category" : "other",
       "developerName" : "The App Fair Project",
-      "iconURL" : "https://assets.appfair.net/Net-Skip/refs/tags/1.4.11/Darwin/Assets.xcassets/AppIcon.appiconset/appicon-iphone-60x60@3x.png",
+      "iconURL" : "https://assets.appfair.net/Net-Skip/refs/tags/1.4.12/Darwin/Assets.xcassets/AppIcon.appiconset/appicon-iphone-60x60@3x.png",
       "localizedDescription" : "Net Skip is the App Fair's free and open-source web browser. It presents a minimal and tasteful browsing experience, resulting in the fastest web browsing experience available on any mobile device, anywhere.\n\nIn contrast with most other browsers on the market, Net Skip is best characterized by what it does *not* feature:\n\n  • No embedded advertising or tracking\n  • No cryptocurrency features\n  • No rewards programs\n  • No in-app purchases or subscriptions\n  • No telemetry, analytics, or user data collection\n  • No monetization whatsoever of the user of the app\n\nThe source code for Net Skip – along with all App Fair projects – is free and open-source, and is distributed under the GNU General Public License (GPL) 3.0. You can access the source for review and modification at https://github.com/Net-Skip/Net-Skip/. It uses the WebKit rendering engine, which is distributed under the GNU Lesser General Public License (LGPL) and whose source code is available at https://webkit.org/.\n\nNet Skip is part of the App Fair Project, a non-profit charity based in the Commonwealth of Massachusetts founded to create and maintain digital public goods in the form of mobile applications. Find out more about the App Fair Project at https://appfair.org and help us build our app marketplace by spreading the word about Net Skip and our other project apps.",
       "marketplaceID" : "1640618584",
       "name" : "Net Skip",
       "screenshots" : {
         "iphone" : [
-          "https://assets.appfair.net/Net-Skip/refs/tags/1.4.11/Darwin/fastlane/screenshots/en-US/0_APP_IPHONE_55_0.png",
-          "https://assets.appfair.net/Net-Skip/refs/tags/1.4.11/Darwin/fastlane/screenshots/en-US/0_APP_IPHONE_65_0.png",
-          "https://assets.appfair.net/Net-Skip/refs/tags/1.4.11/Darwin/fastlane/screenshots/en-US/1_APP_IPHONE_65_1.png",
-          "https://assets.appfair.net/Net-Skip/refs/tags/1.4.11/Darwin/fastlane/screenshots/en-US/2_APP_IPHONE_65_2.png",
-          "https://assets.appfair.net/Net-Skip/refs/tags/1.4.11/Darwin/fastlane/screenshots/en-US/3_APP_IPHONE_65_3.png",
-          "https://assets.appfair.net/Net-Skip/refs/tags/1.4.11/Darwin/fastlane/screenshots/en-US/4_APP_IPHONE_65_4.png",
-          "https://assets.appfair.net/Net-Skip/refs/tags/1.4.11/Darwin/fastlane/screenshots/en-US/5_APP_IPHONE_65_5.png"
+          "https://assets.appfair.net/Net-Skip/refs/tags/1.4.12/Darwin/fastlane/screenshots/en-US/0_APP_IPHONE_55_0.png",
+          "https://assets.appfair.net/Net-Skip/refs/tags/1.4.12/Darwin/fastlane/screenshots/en-US/0_APP_IPHONE_65_0.png",
+          "https://assets.appfair.net/Net-Skip/refs/tags/1.4.12/Darwin/fastlane/screenshots/en-US/1_APP_IPHONE_65_1.png",
+          "https://assets.appfair.net/Net-Skip/refs/tags/1.4.12/Darwin/fastlane/screenshots/en-US/2_APP_IPHONE_65_2.png",
+          "https://assets.appfair.net/Net-Skip/refs/tags/1.4.12/Darwin/fastlane/screenshots/en-US/3_APP_IPHONE_65_3.png",
+          "https://assets.appfair.net/Net-Skip/refs/tags/1.4.12/Darwin/fastlane/screenshots/en-US/4_APP_IPHONE_65_4.png",
+          "https://assets.appfair.net/Net-Skip/refs/tags/1.4.12/Darwin/fastlane/screenshots/en-US/5_APP_IPHONE_65_5.png"
         ]
       },
       "subtitle" : "A humane web browser",
       "versions" : [
         {
-          "buildVersion" : "219",
+          "buildVersion" : "225",
           "date" : "2025-12-01T08:00:00Z",
-          "downloadURL" : "https://delivery.appfair.net/Net-Skip/releases/download/1.4.11/manifest.json",
+          "downloadURL" : "https://delivery.appfair.net/Net-Skip/releases/download/1.4.12/manifest.json",
           "localizedDescription" : "• Many bug fixes and performance improvements.\n• Disable Liquid Glass",
           "size" : 4595712,
-          "version" : "1.4.11"
+          "version" : "1.4.12"
         }
       ]
     },
