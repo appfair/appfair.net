@@ -174,28 +174,28 @@
       "bundleIdentifier" : "org.appfair.app.Tune-Out",
       "category" : "other",
       "developerName" : "The App Fair Project",
-      "iconURL" : "https://assets.appfair.net/Tune-Out/refs/tags/1.0.10/Darwin/Assets.xcassets/AppIcon.appiconset/AppIcon@3x.png",
+      "iconURL" : "https://assets.appfair.net/Tune-Out/refs/tags/1.1.0/Darwin/Assets.xcassets/AppIcon.appiconset/AppIcon@3x.png",
       "localizedDescription" : "An internet radio player.",
       "marketplaceID" : "1639901758",
       "name" : "Tune-Out",
       "screenshots" : {
         "iphone" : [
-          "https://assets.appfair.net/Tune-Out/refs/tags/1.0.10/Darwin/fastlane/screenshots/en-US/1_en-US.png",
-          "https://assets.appfair.net/Tune-Out/refs/tags/1.0.10/Darwin/fastlane/screenshots/en-US/2_en-US.png",
-          "https://assets.appfair.net/Tune-Out/refs/tags/1.0.10/Darwin/fastlane/screenshots/en-US/3_en-US.png",
-          "https://assets.appfair.net/Tune-Out/refs/tags/1.0.10/Darwin/fastlane/screenshots/en-US/4_en-US.png",
-          "https://assets.appfair.net/Tune-Out/refs/tags/1.0.10/Darwin/fastlane/screenshots/en-US/5_en-US.png"
+          "https://assets.appfair.net/Tune-Out/refs/tags/1.1.0/Darwin/fastlane/screenshots/en-US/1_en-US.png",
+          "https://assets.appfair.net/Tune-Out/refs/tags/1.1.0/Darwin/fastlane/screenshots/en-US/2_en-US.png",
+          "https://assets.appfair.net/Tune-Out/refs/tags/1.1.0/Darwin/fastlane/screenshots/en-US/3_en-US.png",
+          "https://assets.appfair.net/Tune-Out/refs/tags/1.1.0/Darwin/fastlane/screenshots/en-US/4_en-US.png",
+          "https://assets.appfair.net/Tune-Out/refs/tags/1.1.0/Darwin/fastlane/screenshots/en-US/5_en-US.png"
         ]
       },
       "subtitle" : "Stream internet radio",
       "versions" : [
         {
-          "buildVersion" : "22",
-          "date" : "2025-12-01T08:00:00Z",
-          "downloadURL" : "https://delivery.appfair.net/Tune-Out/releases/download/1.0.10/manifest.json",
+          "buildVersion" : "24",
+          "date" : "2025-12-04T08:00:00Z",
+          "downloadURL" : "https://delivery.appfair.net/Tune-Out/releases/download/1.1.0/manifest.json",
           "localizedDescription" : "• Bug fixes and performance improvements.\n• Disable Liquid Glass",
-          "size" : 3650560,
-          "version" : "1.0.10"
+          "size" : 3668992,
+          "version" : "1.1.0"
         }
       ]
     }
