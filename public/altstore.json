@@ -114,28 +114,28 @@
       "bundleIdentifier" : "org.appfair.app.Tune-Out",
       "category" : "other",
       "developerName" : "The App Fair Project",
-      "iconURL" : "https://assets.appfair.net/Tune-Out/refs/tags/1.1.2/Darwin/Assets.xcassets/AppIcon.appiconset/AppIcon@3x.png",
-      "localizedDescription" : "An internet radio player.",
+      "iconURL" : "https://assets.appfair.net/Tune-Out/refs/tags/1.1.5/Darwin/Assets.xcassets/AppIcon.appiconset/AppIcon@3x.png",
+      "localizedDescription" : "Listen to internet radio stations from around the world. Tune Out provides access to a wide selection of live broadcasts, allowing you to explore music, news, and talk radio from different countries and genres.\n\nDiscover stations by searching or browsing categories. You can save your favorite stations to custom collections for easy access. The app features a simple playback interface with controls for playing, pausing, and stopping the stream.\n\nTune Out is your companion for listening to global internet radio. It offers a straightforward way to organize and access your preferred stations.",
       "marketplaceID" : "1639901758",
-      "name" : "Tune-Out",
+      "name" : "Tune Out",
       "screenshots" : {
         "iphone" : [
-          "https://assets.appfair.net/Tune-Out/refs/tags/1.1.2/Darwin/fastlane/screenshots/en-US/1_en-US.png",
-          "https://assets.appfair.net/Tune-Out/refs/tags/1.1.2/Darwin/fastlane/screenshots/en-US/2_en-US.png",
-          "https://assets.appfair.net/Tune-Out/refs/tags/1.1.2/Darwin/fastlane/screenshots/en-US/3_en-US.png",
-          "https://assets.appfair.net/Tune-Out/refs/tags/1.1.2/Darwin/fastlane/screenshots/en-US/4_en-US.png",
-          "https://assets.appfair.net/Tune-Out/refs/tags/1.1.2/Darwin/fastlane/screenshots/en-US/5_en-US.png"
+          "https://assets.appfair.net/Tune-Out/refs/tags/1.1.5/Darwin/fastlane/screenshots/en-US/1_en-US.png",
+          "https://assets.appfair.net/Tune-Out/refs/tags/1.1.5/Darwin/fastlane/screenshots/en-US/2_en-US.png",
+          "https://assets.appfair.net/Tune-Out/refs/tags/1.1.5/Darwin/fastlane/screenshots/en-US/3_en-US.png",
+          "https://assets.appfair.net/Tune-Out/refs/tags/1.1.5/Darwin/fastlane/screenshots/en-US/4_en-US.png",
+          "https://assets.appfair.net/Tune-Out/refs/tags/1.1.5/Darwin/fastlane/screenshots/en-US/5_en-US.png"
         ]
       },
       "subtitle" : "Stream internet radio",
       "versions" : [
         {
-          "buildVersion" : "26",
-          "date" : "2025-12-24T08:00:00Z",
-          "downloadURL" : "https://delivery.appfair.net/Tune-Out/releases/download/1.1.2/manifest.json",
+          "buildVersion" : "29",
+          "date" : "2026-01-04T08:00:00Z",
+          "downloadURL" : "https://delivery.appfair.net/Tune-Out/releases/download/1.1.5/manifest.json",
           "localizedDescription" : "• Bug fixes and performance improvements.\n• Disable Liquid Glass",
-          "size" : 3653632,
-          "version" : "1.1.2"
+          "size" : 3690496,
+          "version" : "1.1.5"
         }
       ]
     }
