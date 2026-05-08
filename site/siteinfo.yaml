@@ -49,6 +49,10 @@ accentColor: '#2563EB'
 defaultTheme: 'system'
 defaultPlatform: 'ios'
 
+# Index the built site with Pagefind and surface a search bar in the header,
+# so visitors can search across every catalogued app and locale.
+pagefind: true
+
 showSourceLink: true
 showStoreBadges: true
 showPermissions: true

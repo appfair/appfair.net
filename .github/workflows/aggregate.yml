@@ -33,6 +33,7 @@ jobs:
         with:
           repository: appfair/appland
           path: site/appland
+          #ref: v1
 
       - name: Setup Node
         uses: actions/setup-node@v6
