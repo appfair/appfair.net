@@ -35,9 +35,7 @@ jobs:
           path: site/appland
 
       - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
+        uses: actions/setup-node@v6
 
       - name: Aggregate appindex.json from appfair org releases
         env:
@@ -51,18 +49,9 @@ jobs:
             cp -R site/public/. site/appland/public/
           fi
 
-      - name: Install template dependencies
-        working-directory: site/appland
-        run: npm ci
-
       - name: Build with Astro
-        working-directory: site/appland
-        run: npm run build
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: site/appland/dist
+        id: build
+        uses: withastro/action@v6
 
       - name: Deploy to GitHub Pages
         id: deployment

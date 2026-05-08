@@ -3,7 +3,25 @@
 
 # Required ────────────────────────────────────────────────────────────────────
 
-title: 'App Fair'
+# title, tagline, and footer accept either a plain string or a locale-keyed
+# map. The 13 locales below mirror the App Fair Project's primary locale set
+# (the locales every project app ships content for).
+
+title:
+  en:      'The App Fair Project'
+  ar:      'مشروع آب فير'
+  de:      'Das App-Fair-Projekt'
+  es:      'El proyecto App Fair'
+  fr:      'Le projet App Fair'
+  hi:      'द ऐप फ़ेयर प्रोजेक्ट'
+  id:      'Proyek App Fair'
+  it:      'Il progetto App Fair'
+  ja:      'App Fair プロジェクト'
+  ko:      'App Fair 프로젝트'
+  pt-BR:   'O projeto App Fair'
+  ru:      'Проект App Fair'
+  zh-Hans: 'App Fair 项目'
+
 host: 'https://appfair.net'
 
 # Path to the appindex.json publication document, relative to this file.
@@ -12,7 +30,21 @@ appindex: 'appindex.json'
 
 # Optional ────────────────────────────────────────────────────────────────────
 
-tagline: 'Free, open-source mobile apps'
+tagline:
+  en:      'The catalog of universal free and open source mobile apps'
+  ar:      'كتالوج تطبيقات الهاتف المحمول العالمية المجانية ومفتوحة المصدر'
+  de:      'Der Katalog universeller, freier und quelloffener mobiler Apps'
+  es:      'El catálogo de aplicaciones móviles universales, libres y de código abierto'
+  fr:      "Le catalogue d'applications mobiles universelles, libres et open source"
+  hi:      'सार्वभौमिक, मुफ़्त और ओपन-सोर्स मोबाइल ऐप्स की निर्देशिका'
+  id:      'Katalog aplikasi seluler universal, gratis, dan sumber terbuka'
+  it:      'Il catalogo di app mobili universali, gratuite e open source'
+  ja:      'ユニバーサルな無料・オープンソースのモバイルアプリのカタログ'
+  ko:      '범용 무료 오픈 소스 모바일 앱 카탈로그'
+  pt-BR:   'O catálogo de aplicativos móveis universais, gratuitos e de código aberto'
+  ru:      'Каталог универсальных бесплатных мобильных приложений с открытым исходным кодом'
+  zh-Hans: '通用、免费且开源的移动应用目录'
+
 accentColor: '#2563EB'
 defaultTheme: 'system'
 defaultPlatform: 'ios'
@@ -22,4 +54,19 @@ showStoreBadges: true
 showPermissions: true
 showDependencyCount: true
 
-footer: '© {year} App Fair Project. Open source software.'
+# Footer text supports the same small subset of HTML that descriptions do
+# (notably <a href="…">…</a>), so we can keep the appfair.org link inline.
+footer:
+  en:      'The App Fair Project is a noncommercial source for free and open source mobile applications. Learn more at <a href="https://appfair.org">appfair.org</a>.'
+  ar:      'مشروع آب فير هو مصدر غير ربحي لتطبيقات الهاتف المحمول المجانية ومفتوحة المصدر. اعرف المزيد على <a href="https://appfair.org">appfair.org</a>.'
+  de:      'Das App-Fair-Projekt ist eine nichtkommerzielle Quelle für freie und quelloffene mobile Anwendungen. Mehr dazu unter <a href="https://appfair.org">appfair.org</a>.'
+  es:      'El proyecto App Fair es una fuente no comercial de aplicaciones móviles libres y de código abierto. Más información en <a href="https://appfair.org">appfair.org</a>.'
+  fr:      "Le projet App Fair est une source non commerciale d'applications mobiles libres et open source. En savoir plus sur <a href=\"https://appfair.org\">appfair.org</a>."
+  hi:      'द ऐप फ़ेयर प्रोजेक्ट मुफ़्त और ओपन-सोर्स मोबाइल ऐप्लिकेशन का एक गैर-व्यावसायिक स्रोत है। अधिक जानें <a href="https://appfair.org">appfair.org</a> पर।'
+  id:      'Proyek App Fair adalah sumber nirlaba untuk aplikasi seluler gratis dan sumber terbuka. Pelajari lebih lanjut di <a href="https://appfair.org">appfair.org</a>.'
+  it:      'Il progetto App Fair è una fonte non commerciale di applicazioni mobili gratuite e open source. Scopri di più su <a href="https://appfair.org">appfair.org</a>.'
+  ja:      'App Fair プロジェクトは、無料でオープンソースのモバイルアプリケーションを提供する非商用のソースです。詳しくは <a href="https://appfair.org">appfair.org</a> をご覧ください。'
+  ko:      'App Fair 프로젝트는 무료 오픈 소스 모바일 애플리케이션을 위한 비영리 출처입니다. 자세한 내용은 <a href="https://appfair.org">appfair.org</a>에서 확인하세요.'
+  pt-BR:   'O projeto App Fair é uma fonte não comercial de aplicativos móveis livres e de código aberto. Saiba mais em <a href="https://appfair.org">appfair.org</a>.'
+  ru:      'Проект App Fair — некоммерческий источник бесплатных мобильных приложений с открытым исходным кодом. Подробнее на <a href="https://appfair.org">appfair.org</a>.'
+  zh-Hans: 'App Fair 项目是免费开源移动应用的非商业来源。更多信息请访问 <a href="https://appfair.org">appfair.org</a>。'
