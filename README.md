@@ -7,9 +7,15 @@ that each app's release pipeline ships.
 
 ## How it works
 
-1. `scripts/aggregate.mjs` enumerates the `appfair` org via the GitHub API,
-   fetches each repo's `releases/latest/download/appindex.json`, and merges
-   them into a single `site/appindex.json` (multi-app mode).
+1. `scripts/aggregate.mjs` lists every repository in the
+   [`appfair`](https://github.com/appfair) GitHub org via the API, keeps
+   only the **forks** (which is how App Fair catalogues each app — e.g.
+   [`appfair/Net-Skip`](https://github.com/appfair/Net-Skip) is a fork of
+   [`Net-Skip/Net-Skip`](https://github.com/Net-Skip/Net-Skip)), fetches
+   `https://github.com/appfair/<repo>/releases/latest/download/appindex.json`
+   from each, and merges them into a single `site/appindex.json` (multi-app
+   mode). Forks whose latest release doesn't yet publish an appindex.json
+   are silently skipped.
 2. The [`appfair/appland`](https://github.com/appfair/appland) Astro template
    is checked out into `site/appland`.
 3. `astro build` reads `site/siteinfo.yaml` and `site/appindex.json` and

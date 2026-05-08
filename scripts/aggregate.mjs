@@ -1,19 +1,30 @@
 #!/usr/bin/env node
 /**
- * Enumerate every repository in the GitHub `appfair` organization, fetch
- * each one's `appindex.json` from the latest release, and merge the
- * resulting `apps[]` entries into a single `site/appindex.json` suitable for
- * the appland template's multi-app mode.
+ * Build site/appindex.json for the App Fair catalog site.
+ *
+ * The App Fair Project mirrors each app it catalogues as a fork inside the
+ * `appfair` GitHub org (e.g. https://github.com/appfair/Net-Skip is a fork
+ * of https://github.com/Net-Skip/Net-Skip). The fork's release pipeline is
+ * what publishes the canonical appindex.json artefact.
+ *
+ * This script:
+ *   1. Lists every repository in the `appfair` org via the GitHub API.
+ *   2. Keeps only the forks (skipping archived / disabled / non-fork repos).
+ *   3. Fetches each fork's
+ *        https://github.com/appfair/<repo>/releases/latest/download/appindex.json
+ *      Forks that haven't published one yet (HTTP 404) are silently skipped.
+ *   4. Merges every retrieved `apps[]` entry into a single site/appindex.json
+ *      (multi-app mode for the appland template).
  *
  * Usage:
  *   node scripts/aggregate.mjs
  *
  * Environment:
- *   GITHUB_TOKEN   (optional)  Bumps the unauthenticated rate limit.
+ *   GITHUB_TOKEN   (optional)  Bearer token for higher rate limits.
  *   AGGREGATE_ORG  (optional)  Override the GitHub org (default: appfair).
  */
 
-import { writeFile, mkdir } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -23,19 +34,19 @@ const REPO_ROOT = resolve(HERE, '..');
 const OUTPUT_PATH = resolve(REPO_ROOT, 'site', 'appindex.json');
 
 const GH_TOKEN = process.env.GITHUB_TOKEN;
-const HEADERS = {
-  'accept': 'application/vnd.github+json',
+const API_HEADERS = {
+  accept: 'application/vnd.github+json',
   'user-agent': 'appfair-aggregator',
-  ...(GH_TOKEN ? { 'authorization': `Bearer ${GH_TOKEN}` } : {}),
+  ...(GH_TOKEN ? { authorization: `Bearer ${GH_TOKEN}` } : {}),
 };
 
-async function listOrgRepos(org) {
+/** Returns the names of every active fork inside the org. */
+async function listForks(org) {
   const all = [];
-  // Cap at 50 pages (5000 repos) — way beyond any realistic ceiling.
   for (let page = 1; page <= 50; page++) {
     const r = await fetch(
       `https://api.github.com/orgs/${org}/repos?per_page=100&page=${page}&type=public`,
-      { headers: HEADERS },
+      { headers: API_HEADERS },
     );
     if (!r.ok) {
       throw new Error(`list ${org}/ repos: HTTP ${r.status} ${r.statusText}`);
@@ -46,30 +57,46 @@ async function listOrgRepos(org) {
     if (batch.length < 100) break;
   }
   return all
-    .filter((r) => !r.archived && !r.disabled && !r.fork)
+    .filter((r) => r.fork && !r.archived && !r.disabled)
     .map((r) => r.name);
 }
 
 async function fetchAppIndex(org, repo) {
-  // GitHub redirects /releases/latest/download/<asset> to the asset's
-  // permanent URL; missing repos / releases / assets all return 404.
+  // GitHub redirects /releases/latest/download/<asset> to the asset blob;
+  // missing repo / release / asset all surface as 404.
   const url = `https://github.com/${org}/${repo}/releases/latest/download/appindex.json`;
-  const r = await fetch(url, { redirect: 'follow' });
+  const r = await fetch(url, {
+    redirect: 'follow',
+    headers: { 'user-agent': 'appfair-aggregator' },
+  });
   if (r.status === 404) return null;
-  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  if (!r.ok) throw new Error(`HTTP ${r.status} ${r.statusText}`);
   const text = await r.text();
   if (!text.trim().startsWith('{')) return null;
-  try {
-    return JSON.parse(text);
-  } catch {
-    return null;
-  }
+  return JSON.parse(text);
 }
 
 async function main() {
-  console.log(`[aggregate] enumerating repos in ${ORG}/…`);
-  const repos = await listOrgRepos(ORG);
-  console.log(`[aggregate] ${repos.length} candidate repo(s)`);
+  console.log(`[aggregate] listing forks in ${ORG}/…`);
+  const forks = await listForks(ORG);
+  console.log(`[aggregate] ${forks.length} fork(s): ${forks.join(', ') || '(none)'}`);
+
+  // Probe in parallel — most attempts may 404, so this stays cheap.
+  const results = await Promise.all(
+    forks.map(async (repo) => {
+      try {
+        const idx = await fetchAppIndex(ORG, repo);
+        if (!idx || !Array.isArray(idx.apps) || idx.apps.length === 0) {
+          console.warn(`[aggregate] ${repo}: no appindex.json published yet — skipped`);
+          return null;
+        }
+        return { repo, idx };
+      } catch (err) {
+        console.warn(`[aggregate] ${repo}: ${err.message}`);
+        return null;
+      }
+    }),
+  );
 
   const merged = {
     $schema: 'https://appfair.org/schemas/appindex/v1.json',
@@ -79,29 +106,22 @@ async function main() {
     apps: [],
   };
 
-  // Probe in parallel — most attempts will be 404s, so this stays cheap.
-  const results = await Promise.all(
-    repos.map(async (repo) => {
-      try {
-        const idx = await fetchAppIndex(ORG, repo);
-        if (!idx || !Array.isArray(idx.apps) || idx.apps.length === 0) return null;
-        return { repo, idx };
-      } catch (err) {
-        console.warn(`[aggregate] ${repo}: ${err.message}`);
-        return null;
-      }
-    }),
-  );
-
   for (const r of results) {
     if (!r) continue;
     console.log(`[aggregate] ${r.repo}: ${r.idx.apps.length} app(s)`);
     for (const app of r.idx.apps) {
-      // Slug = repo name, so /apps/{slug}/ matches the GitHub repo URL.
-      // Most appindexes already use this; the override is defensive.
+      // Slug = fork repo name, so /apps/{slug}/ matches the GitHub URL.
       app.name = r.repo;
       merged.apps.push(app);
     }
+  }
+
+  if (merged.apps.length === 0) {
+    throw new Error(
+      `aggregated 0 apps — every fork in ${ORG}/ returned 404 or empty. ` +
+        `Refusing to write an empty appindex.json (the appland template ` +
+        `rejects it). Forks probed: ${forks.join(', ') || '(none)'}`,
+    );
   }
 
   // De-duplicate by slug (last-wins) and sort for deterministic output.
