@@ -13,9 +13,15 @@ that each app's release pipeline ships.
    [`appfair/Net-Skip`](https://github.com/appfair/Net-Skip) is a fork of
    [`Net-Skip/Net-Skip`](https://github.com/Net-Skip/Net-Skip)), fetches
    `https://github.com/appfair/<repo>/releases/latest/download/appindex.json`
-   from each, and merges them into a single `site/appindex.json` (multi-app
-   mode). Forks whose latest release doesn't yet publish an appindex.json
-   are silently skipped.
+   from each, and merges them. The result is written to two places:
+   - `site/appindex.json` — build input for the appland template
+     (multi-app mode).
+   - `site/public/appindex.v1.json` — copy that ships with the static
+     site, downloadable from
+     <https://appfair.net/appindex.v1.json>.
+
+   Forks whose latest release doesn't yet publish an appindex.json are
+   silently skipped.
 2. The [`appfair/appland`](https://github.com/appfair/appland) Astro template
    is checked out into `site/appland`.
 3. `astro build` reads `site/siteinfo.yaml` and `site/appindex.json` and
@@ -32,7 +38,8 @@ appfair.net/
 └── site/
     ├── siteinfo.yaml                 # template config (title, host, etc.)
     ├── public/                       # static files copied into the build
-    ├── appindex.json                 # generated; gitignored
+    │   └── appindex.v1.json          # generated copy — served at /appindex.v1.json
+    ├── appindex.json                 # generated build input; gitignored
     └── appland/                      # template; gitignored, fetched in CI
 ```
 

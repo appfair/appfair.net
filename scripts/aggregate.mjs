@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Build site/appindex.json for the App Fair catalog site.
+ * Build the appindex.json artefacts for the App Fair catalog site.
  *
  * The App Fair Project mirrors each app it catalogues as a fork inside the
  * `appfair` GitHub org (e.g. https://github.com/appfair/Net-Skip is a fork
@@ -13,8 +13,11 @@
  *   3. Fetches each fork's
  *        https://github.com/appfair/<repo>/releases/latest/download/appindex.json
  *      Forks that haven't published one yet (HTTP 404) are silently skipped.
- *   4. Merges every retrieved `apps[]` entry into a single site/appindex.json
- *      (multi-app mode for the appland template).
+ *   4. Merges every retrieved `apps[]` entry into a single object.
+ *   5. Writes the result to two locations:
+ *        - site/appindex.json            (build input for the appland template)
+ *        - site/public/appindex.v1.json  (downloadable artefact, served at
+ *                                         https://appfair.net/appindex.v1.json)
  *
  * Usage:
  *   node scripts/aggregate.mjs
@@ -31,7 +34,18 @@ import { fileURLToPath } from 'node:url';
 const ORG = process.env.AGGREGATE_ORG ?? 'appfair';
 const HERE = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(HERE, '..');
-const OUTPUT_PATH = resolve(REPO_ROOT, 'site', 'appindex.json');
+
+// Two output paths, same content:
+//   - the build input the appland template reads via siteinfo.appindex
+//   - the publicly downloadable copy that ships in site/public/ (and so
+//     ends up at https://appfair.net/appindex.v1.json after Astro builds).
+const BUILD_INPUT_PATH = resolve(REPO_ROOT, 'site', 'appindex.json');
+const PUBLIC_OUTPUT_PATH = resolve(
+  REPO_ROOT,
+  'site',
+  'public',
+  'appindex.v1.json',
+);
 
 const GH_TOKEN = process.env.GITHUB_TOKEN;
 const API_HEADERS = {
@@ -131,11 +145,12 @@ async function main() {
     a.name.localeCompare(b.name),
   );
 
-  await mkdir(dirname(OUTPUT_PATH), { recursive: true });
-  await writeFile(OUTPUT_PATH, JSON.stringify(merged, null, 2) + '\n');
-  console.log(
-    `[aggregate] wrote ${merged.apps.length} app(s) → ${OUTPUT_PATH}`,
-  );
+  const body = JSON.stringify(merged, null, 2) + '\n';
+  for (const out of [BUILD_INPUT_PATH, PUBLIC_OUTPUT_PATH]) {
+    await mkdir(dirname(out), { recursive: true });
+    await writeFile(out, body);
+    console.log(`[aggregate] wrote ${merged.apps.length} app(s) → ${out}`);
+  }
 }
 
 main().catch((err) => {

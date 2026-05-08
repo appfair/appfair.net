@@ -40,9 +40,12 @@ jobs:
       - name: Aggregate appindex.json from appfair org releases
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Writes site/appindex.json (build input for the template) AND
+        # site/public/appindex.v1.json (downloadable copy served at
+        # https://appfair.net/appindex.v1.json after deploy).
         run: node scripts/aggregate.mjs
 
-      - name: Merge legacy public files into template
+      - name: Merge public files into template
         run: |
           if [ -d site/public ]; then
             mkdir -p site/appland/public
