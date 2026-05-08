@@ -53,7 +53,7 @@ jobs:
         id: build
         uses: withastro/action@v6
         with:
-          package-manager: npm
+          path: site/appland
 
       - name: Deploy to GitHub Pages
         id: deployment
