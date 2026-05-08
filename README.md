@@ -1,35 +1,50 @@
-# The App Fair Project catalog site
+# appfair.net
 
-## Commands
+The App Fair Project catalog site. Aggregates every published app in the
+[`appfair`](https://github.com/appfair) GitHub org into a single landing
+page, with a per-app sub-page for each one — generated from the appindex.json
+that each app's release pipeline ships.
 
-All commands are run from the root of the project, from a terminal:
+## How it works
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+1. `scripts/aggregate.mjs` enumerates the `appfair` org via the GitHub API,
+   fetches each repo's `releases/latest/download/appindex.json`, and merges
+   them into a single `site/appindex.json` (multi-app mode).
+2. The [`appfair/appland`](https://github.com/appfair/appland) Astro template
+   is checked out into `site/appland`.
+3. `astro build` reads `site/siteinfo.yaml` and `site/appindex.json` and
+   emits a localized landing page at `/{locale}/` plus per-app pages at
+   `/{locale}/apps/{repo}/`.
+4. `.github/workflows/aggregate.yml` runs the above hourly on a cron.
 
-## Project Structure
+## Layout
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```
+appfair.net/
+├── .github/workflows/aggregate.yml   # hourly poll + build + deploy
+├── scripts/aggregate.mjs             # GH org → site/appindex.json
+└── site/
+    ├── siteinfo.yaml                 # template config (title, host, etc.)
+    ├── public/                       # static files copied into the build
+    ├── appindex.json                 # generated; gitignored
+    └── appland/                      # template; gitignored, fetched in CI
 ```
 
-To learn more about the folder structure of an Astro project, refer to [the Astro guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Local development
 
+```sh
+# 1. Aggregate the catalog (writes site/appindex.json)
+node scripts/aggregate.mjs
+
+# 2. Vendor the template
+git clone https://github.com/appfair/appland site/appland
+
+# 3. Run the dev server
+cd site/appland
+npm install
+npm run dev
+```
+
+## License
+
+CC0 1.0 Universal — see [LICENSE](LICENSE).

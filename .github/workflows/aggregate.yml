@@ -1,0 +1,69 @@
+name: Aggregate and Deploy
+
+on:
+  schedule:
+    # Hourly: re-poll every appfair org repo's latest release for an
+    # appindex.json and rebuild the catalog site.
+    - cron: '0 * * * *'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout appfair.net
+        uses: actions/checkout@v6
+
+      - name: Checkout appland template
+        uses: actions/checkout@v6
+        with:
+          repository: appfair/appland
+          path: site/appland
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Aggregate appindex.json from appfair org releases
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/aggregate.mjs
+
+      - name: Merge legacy public files into template
+        run: |
+          if [ -d site/public ]; then
+            mkdir -p site/appland/public
+            cp -R site/public/. site/appland/public/
+          fi
+
+      - name: Install template dependencies
+        working-directory: site/appland
+        run: npm ci
+
+      - name: Build with Astro
+        working-directory: site/appland
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/appland/dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
