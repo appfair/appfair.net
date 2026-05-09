@@ -45,6 +45,22 @@ appfair.net/
 
 ## Local development
 
+If you have the [`appland`](https://github.com/appfair/appland) template
+checked out as a sibling of this repo (i.e. `../appland/` exists), the
+quickest path is:
+
+```sh
+scripts/dev.sh
+```
+
+That script aggregates the catalog, mirrors `../appland/` into
+`site/appland/` (preserving `node_modules` between runs so subsequent
+launches are fast), copies `site/public/` into the template, runs
+`npm install` the first time only, and starts `astro dev` at
+<http://localhost:4321/>.
+
+If the template isn't checked out locally, run the steps manually:
+
 ```sh
 # 1. Aggregate the catalog (writes site/appindex.json)
 node scripts/aggregate.mjs
