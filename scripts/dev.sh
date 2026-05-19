@@ -75,5 +75,6 @@ if [[ ! -d site/appland/node_modules ]]; then
 fi
 
 # ─── 5. Launch the dev server ──────────────────────────────────────────────
-echo "dev.sh: launching astro dev → http://localhost:4321/"
-exec npm --prefix site/appland run dev
+ASTRO_PORT=${ASTRO_PORT:-4321}
+echo "dev.sh: launching astro dev → http://localhost:${ASTRO_PORT}/"
+exec npm --prefix site/appland run dev -- --port ${ASTRO_PORT}
