@@ -30,7 +30,9 @@ that each app's release pipeline ships.
 4. `scripts/fdroid-mirror.mjs` derives the **curated F-Droid repository**
    (see [`fdroid/README.md`](fdroid/README.md)): it filters the official
    `https://f-droid.org/repo/index-v2.json` down to the ~100 reproducible,
-   upstream-signed, well-known apps in `fdroid/allowlist.txt`, and
+   upstream-signed, well-known apps in `fdroid/curated.yaml` (which also
+   defines the star-ranked default sort order published as the index's
+   top-level `rank` array), and
    `scripts/fdroid-sign.sh` signs the result F-Droid-style with the repo
    key held in GitHub secrets. Served at <https://appfair.net/repo/>
    (add-repo URL: `https://appfair.net/repo?fingerprint=…`). APK binaries
@@ -47,7 +49,7 @@ appfair.net/
 ├── scripts/fdroid-mirror.mjs         # f-droid.org index → curated site/public/repo/
 ├── scripts/fdroid-sign.sh            # entry.json → signed entry.jar
 ├── fdroid/
-│   ├── allowlist.txt                 # the curated ~100-app subset
+│   ├── curated.yaml                  # the curated ~100-app subset, star-ranked
 │   └── README.md                     # criteria, key setup, caveats
 └── site/
     ├── siteinfo.yaml                 # template config (title, host, etc.)

@@ -37,6 +37,12 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v6
+        with:
+          cache: npm
+
+      - name: Install script dependencies
+        # scripts/fdroid-mirror.mjs needs the `yaml` package (fdroid/curated.yaml)
+        run: npm ci
 
       - name: Aggregate appindex.json from appfair org releases
         env:
@@ -48,7 +54,7 @@ jobs:
 
       - name: Derive curated F-Droid repo index
         # Filters the official f-droid.org index-v2.json down to the curated
-        # subset in fdroid/allowlist.txt. Writes site/public/repo/
+        # subset in fdroid/curated.yaml. Writes site/public/repo/
         # {index-v2.json,entry.json}; served at https://appfair.net/repo/
         # after deploy. APKs are not mirrored — clients fetch them from the
         # official f-droid.org mirror pool listed in the index.

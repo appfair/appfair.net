@@ -2,7 +2,7 @@
 
 A filtered, re-signed mirror of the official [F-Droid](https://f-droid.org)
 catalog, served at **https://appfair.net/repo** — the ~100 apps in
-[`allowlist.txt`](allowlist.txt) that are:
+[`curated.yaml`](curated.yaml) that are:
 
 1. **Reproducibly built and upstream-signed.** Only apps enrolled in
    F-Droid's [reproducible builds](https://f-droid.org/docs/Reproducible_Builds/)
@@ -14,11 +14,18 @@ catalog, served at **https://appfair.net/repo** — the ~100 apps in
 2. **Relatively popular or well-known** — ranked by GitHub stars of the
    upstream project plus editorial judgment for off-GitHub projects
    (Briar, Öffi, Bitcoin Wallet, …).
-3. **Non-controversial** — no VPN/proxy or censorship-circumvention tools,
-   no BitTorrent clients, no unauthorized clients for proprietary services
-   (YouTube/YT-Music frontends, scraper downloaders, third-party Reddit or
-   Bilibili clients, covert-recording tools, and similar are excluded even
-   when they meet criteria 1–2).
+3. **Non-controversial** — excluded even when they meet criteria 1–2:
+   - VPN/proxy or censorship-circumvention tools
+   - BitTorrent clients
+   - unauthorized clients for proprietary services (YouTube/YT-Music
+     frontends, scraper downloaders, third-party Reddit or Bilibili
+     clients), and covert-recording tools
+   - Bitcoin or any other cryptocurrency-related apps
+   - apps offering medical advice or services (including medication
+     reminders)
+   - other app stores / app updaters (e.g. Obtainium)
+   - anything related to gambling
+   - anything related to adult or pornographic material
 
 ## How it works
 
@@ -27,9 +34,10 @@ f-droid.org/repo/entry.jar ──verify sig + pinned fingerprint──┐
 f-droid.org/repo/index-v2.json ──verify sha256 from entry─────┤
                                                               ▼
                      scripts/fdroid-mirror.mjs  (hourly, in CI)
-                       · keep only allowlist.txt packages
+                       · keep only curated.yaml apps
                        · rewrite repo section: address=appfair.net/repo,
                          mirrors=official f-droid.org mirror pool
+                       · add top-level "rank" array (curated sort order)
                        · timestamp: propagated from upstream (monotonic)
                                                               ▼
                      site/public/repo/{index-v2.json, entry.json}
@@ -84,7 +92,19 @@ and prints a workflow warning; clients cannot add the repo in that state.
 
 ## Curation
 
-`allowlist.txt` is the single source of truth — one package id per line.
+`curated.yaml` is the single source of truth: a flat `apps:` list of
+`{id, name, summary, stars, category}` entries, parsed with the `yaml`
+package (run `npm ci` before invoking `scripts/fdroid-mirror.mjs`
+locally). Entries are
+**ordered by forge star count, descending**; that file order is published
+verbatim as a non-standard top-level `"rank"` array in the derived
+`index-v2.json` — the default sort order for catalog UIs. F-Droid clients
+parse the index with unknown keys ignored, so the extension is invisible
+to them. The `stars` field is the snapshot the ranking was based on
+(GitHub `stargazerCount`, or GitLab `star_count` for off-GitHub projects;
+for Briar the github.com/briar/briar mirror is used since its self-hosted
+GitLab has no meaningful audience).
+
 To re-derive the candidate pool when revisiting the list:
 
 1. Clone [fdroiddata](https://gitlab.com/fdroid/fdroiddata) and collect
@@ -97,8 +117,10 @@ To re-derive the candidate pool when revisiting the list:
 3. Rank by GitHub stars of `sourceCode` (batch GraphQL) and apply the
    exclusion policy above, plus: prefer stable over beta variants, one entry
    per app family, and drop apps not updated in over a year.
+4. Refresh the `stars` values and re-sort the `apps:` list descending so
+   the published `rank` order stays honest.
 
-`scripts/fdroid-mirror.mjs` warns (but does not fail) when an allowlisted
+`scripts/fdroid-mirror.mjs` warns (but does not fail) when a curated
 app disappears from the upstream index — apps do get unpublished or lose
 reproducibility, so check the CI logs occasionally and prune.
 
@@ -107,7 +129,7 @@ reproducibility, so check the CI logs occasionally and prune.
 - **Allowlist-only changes propagate on upstream's schedule.** The repo
   timestamp is propagated from f-droid.org (it must increase strictly
   monotonically, and reusing it keeps runs idempotent), so clients that
-  already fetched today's timestamp pick up an allowlist change with the
+  already fetched today's timestamp pick up a curated-list change with the
   next upstream index rotation — normally well under a day.
 - **No `index-v1.jar`.** Clients older than F-Droid 1.16 (early 2023) can't
   use this repo.

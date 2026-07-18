@@ -1,0 +1,512 @@
+# App Fair curated F-Droid catalog.
+#
+# Entries are ordered by forge (GitHub/GitLab) star count, descending; this
+# order is published verbatim as the top-level "rank" array of the derived
+# index-v2.json and is the catalog's default sort order. `stars` is the
+# snapshot the ranking was based on — refresh counts and re-sort when
+# revisiting the list (see README.md).
+#
+# Schema: a flat `apps:` list of {id, name, summary, stars, category},
+# consumed by scripts/fdroid-mirror.mjs.
+
+apps:
+  - id: org.localsend.localsend_app
+    name: "LocalSend"
+    summary: "cross-platform AirDrop alternative"
+    stars: 85506
+    category: "File transfer & sync"
+  - id: ru.tech.imageresizershrinker
+    name: "Image Toolbox"
+    summary: "swiss-army image editor"
+    stars: 13790
+    category: "Photos & graphics"
+  - id: net.thunderbird.android
+    name: "Thunderbird"
+    summary: "Mozilla email client"
+    stars: 13712
+    category: "Communication & social"
+  - id: org.breezyweather
+    name: "Breezy Weather"
+    summary: "A feature-rich weather app with good visualizations and many sources"
+    stars: 10772
+    category: "Weather"
+  - id: tech.lolli.toolbox
+    name: "ServerBox"
+    summary: "server monitor & SSH"
+    stars: 8157
+    category: "System & device"
+  - id: eu.darken.sdmse
+    name: "SD Maid 2/SE"
+    summary: "system cleaner"
+    stars: 7102
+    category: "System & device"
+  - id: com.xayah.databackup.foss
+    name: "DataBackup"
+    summary: "root backup"
+    stars: 7057
+    category: "System & device"
+  - id: helium314.keyboard
+    name: "HeliBoard"
+    summary: "OpenBoard successor"
+    stars: 5661
+    category: "Keyboards & input"
+  - id: org.fcitx.fcitx5.android
+    name: "Fcitx5"
+    summary: "CJK input method"
+    stars: 5440
+    category: "Keyboards & input"
+  - id: io.github.samolego.canta
+    name: "Canta"
+    summary: "bloatware remover via Shizuku"
+    stars: 5293
+    category: "System & device"
+  - id: dev.spiegl.flyingcarpet
+    name: "Flying Carpet"
+    summary: "wireless file transfer"
+    stars: 5231
+    category: "File transfer & sync"
+  - id: org.jellyfin.androidtv
+    name: "Jellyfin for Android TV"
+    summary: "Television client for Jellyfin, the free software media system"
+    stars: 4387
+    category: "Media"
+  - id: dev.jdtech.jellyfin
+    name: "Findroid"
+    summary: "native Jellyfin client"
+    stars: 4151
+    category: "Media"
+  - id: dev.anilbeesetti.nextplayer
+    name: "Next Player"
+    summary: "local video player"
+    stars: 4139
+    category: "Media"
+  - id: org.fossify.gallery
+    name: "Fossify Gallery"
+    summary: "Simple Gallery successor"
+    stars: 3508
+    category: "Photos & graphics"
+  - id: juloo.keyboard2
+    name: "Unexpected Keyboard"
+    summary: "Lightweight and privacy-conscious virtual keyboard for Android"
+    stars: 3131
+    category: "Keyboards & input"
+  - id: com.nononsenseapps.feeder
+    name: "Feeder"
+    summary: "RSS reader"
+    stars: 2915
+    category: "News & reading"
+  - id: org.jellyfin.mobile
+    name: "Jellyfin"
+    summary: "self-hosted media client"
+    stars: 2617
+    category: "Media"
+  - id: dev.octoshrimpy.quik.fdroid
+    name: "QUIK SMS"
+    summary: "QKSMS successor"
+    stars: 2595
+    category: "Communication & social"
+  - id: org.lichess.mobileV2
+    name: "Lichess"
+    summary: "the chess platform"
+    stars: 2407
+    category: "Games"
+  - id: com.github.catfriend1.syncthingfork
+    name: "Syncthing-Fork"
+    summary: "maintained Syncthing wrapper"
+    stars: 2387
+    category: "File transfer & sync"
+  - id: com.drdisagree.colorblendr
+    name: "ColorBlendr"
+    summary: "Material You theming"
+    stars: 2298
+    category: "System & device"
+  - id: de.felixnuesse.extract
+    name: "Round Sync"
+    summary: "rclone for Android"
+    stars: 2281
+    category: "File transfer & sync"
+  - id: io.element.android.x
+    name: "Element X"
+    summary: "Matrix client"
+    stars: 2276
+    category: "Communication & social"
+  - id: org.akanework.gramophone
+    name: "Gramophone"
+    summary: "local music player"
+    stars: 2177
+    category: "Media"
+  - id: com.rk.xededitor
+    name: "Xed-Editor"
+    summary: "code editor"
+    stars: 2098
+    category: "Development"
+  - id: com.viscouspot.gitsync
+    name: "GitSync"
+    summary: "auto git sync"
+    stars: 2084
+    category: "Development"
+  - id: in.hridayan.ashell
+    name: "aShell You"
+    summary: "Shizuku shell"
+    stars: 2070
+    category: "System & device"
+  - id: io.github.mkckr0.audio_share_app
+    name: "Audio Share"
+    summary: "stream PC audio to phone"
+    stars: 2046
+    category: "File transfer & sync"
+  - id: org.fossify.calendar
+    name: "Fossify Calendar"
+    summary: "Securely plan, schedule, and set reminders with our private calendar app"
+    stars: 2031
+    category: "Notes & productivity"
+  - id: app.vger.voyager
+    name: "Voyager"
+    summary: "Lemmy client"
+    stars: 1792
+    category: "Communication & social"
+  - id: com.geeksville.mesh
+    name: "Meshtastic"
+    summary: "off-grid LoRa mesh"
+    stars: 1733
+    category: "System & device"
+  - id: com.vicolo.chrono
+    name: "Chrono"
+    summary: "clock & timers"
+    stars: 1722
+    category: "Notes & productivity"
+  - id: spam.blocker
+    name: "SpamBlocker"
+    summary: "call & SMS filter"
+    stars: 1717
+    category: "Communication & social"
+  - id: io.github.zyrouge.symphony
+    name: "Symphony"
+    summary: "local music player"
+    stars: 1681
+    category: "Media"
+  - id: app.myzel394.alibi
+    name: "Alibi"
+    summary: "dashcam-style rolling recorder"
+    stars: 1660
+    category: "Media"
+  - id: org.fossify.filemanager
+    name: "Fossify File Manager"
+    summary: "Handy, lightweight, open-source file explorer with essential features"
+    stars: 1638
+    category: "Fossify suite (Simple Mobile Tools successors)"
+  - id: com.dessalines.thumbkey
+    name: "Thumb-Key"
+    summary: "A privacy-conscious keyboard made for your thumbs"
+    stars: 1509
+    category: "Keyboards & input"
+  - id: com.donnnno.arcticons
+    name: "Arcticons"
+    summary: "12k+ line icons"
+    stars: 1506
+    category: "Icon packs"
+  - id: com.starry.myne
+    name: "Myne"
+    summary: "Project Gutenberg ebook reader"
+    stars: 1489
+    category: "News & reading"
+  - id: org.fossify.messages
+    name: "Fossify Messages"
+    summary: "Open-source and Ad-free SMS/MMS messaging app"
+    stars: 1444
+    category: "Fossify suite (Simple Mobile Tools successors)"
+  - id: io.github.friesi23.mhabit
+    name: "Table Habit"
+    summary: "habit tracker"
+    stars: 1426
+    category: "Notes & productivity"
+  - id: de.astubenbord.paperless_mobile
+    name: "Paperless Mobile"
+    summary: "paperless-ngx client"
+    stars: 1417
+    category: "Notes & productivity"
+  - id: com.ripster.sossoldi
+    name: "Sossoldi"
+    summary: "personal finance"
+    stars: 1374
+    category: "Finance"
+  - id: org.nsh07.pomodoro
+    name: "Tomato"
+    summary: "pomodoro timer"
+    stars: 1363
+    category: "Notes & productivity"
+  - id: io.github.quillpad
+    name: "Quillpad"
+    summary: "notes"
+    stars: 1345
+    category: "Notes & productivity"
+  - id: ua.acclorite.book_story
+    name: "Book's Story"
+    summary: "ebook reader"
+    stars: 1332
+    category: "News & reading"
+  - id: io.github.teamclouday.AndroidMic
+    name: "AndroidMic"
+    summary: "use phone as PC microphone"
+    stars: 1315
+    category: "File transfer & sync"
+  - id: com.capyreader.app
+    name: "Capy Reader"
+    summary: "RSS reader"
+    stars: 1282
+    category: "News & reading"
+  - id: org.fossify.phone
+    name: "Fossify Phone"
+    summary: "Unlock a secure, open-source calling experience with Fossify Phone"
+    stars: 1254
+    category: "Fossify suite (Simple Mobile Tools successors)"
+  - id: com.dede.android_eggs
+    name: "Easter Eggs"
+    summary: "Android easter egg collection"
+    stars: 1240
+    category: "System & device"
+  - id: com.f0x1d.logfox
+    name: "LogFox"
+    summary: "logcat reader"
+    stars: 1238
+    category: "System & device"
+  - id: com.razeeman.util.simpletimetracker
+    name: "Simple Time Tracker"
+    summary: "Time tracker for work, study, and building better daily habits"
+    stars: 1171
+    category: "Notes & productivity"
+  - id: dev.chungjungsoo.gptmobile
+    name: "GPTMobile"
+    summary: "BYO-key LLM chat"
+    stars: 1167
+    category: "AI"
+  - id: org.cryptomator.lite
+    name: "Cryptomator"
+    summary: "cloud storage encryption"
+    stars: 1162
+    category: "Security & privacy"
+  - id: com.anthonyla.paperize
+    name: "Paperize"
+    summary: "wallpaper changer"
+    stars: 1152
+    category: "Photos & graphics"
+  - id: com.orgzlyrevived
+    name: "Orgzly Revived"
+    summary: "org-mode notes"
+    stars: 1102
+    category: "Notes & productivity"
+  - id: eu.darken.capod
+    name: "CAPod"
+    summary: "AirPods companion"
+    stars: 1053
+    category: "System & device"
+  - id: dev.davidv.translator
+    name: "Offline Translator"
+    summary: "fully local translation"
+    stars: 1016
+    category: "Office & tools"
+  - id: com.kin.easynotes
+    name: "Easy Notes"
+    summary: "Private, Material, Markdown supported notes app"
+    stars: 1014
+    category: "Notes & productivity"
+  - id: ch.threema.app.libre
+    name: "Threema Libre"
+    summary: "secure messenger"
+    stars: 977
+    category: "Communication & social"
+  - id: org.joinmastodon.android.moshinda
+    name: "Moshidon"
+    summary: "Mastodon client"
+    stars: 956
+    category: "Communication & social"
+  - id: de.felixnuesse.disky
+    name: "disky"
+    summary: "disk usage analyzer"
+    stars: 924
+    category: "System & device"
+  - id: com.chiller3.rsaf
+    name: "RSAF"
+    summary: "rclone as a storage provider"
+    stars: 897
+    category: "File transfer & sync"
+  - id: io.github.jd1378.otphelper
+    name: "Copy SMS Code"
+    summary: "OTP helper"
+    stars: 885
+    category: "Security & privacy"
+  - id: org.fossify.musicplayer
+    name: "Fossify Music Player"
+    summary: "Open-source and Ad-free Music Player with customizable widget & sleep timer"
+    stars: 864
+    category: "Media"
+  - id: website.leifs.delta.foss
+    name: "Delta Icon Pack"
+    summary: "Minimalistic pastel icon pack for Android"
+    stars: 846
+    category: "Icon packs"
+  - id: org.fossify.contacts
+    name: "Fossify Contacts"
+    summary: "Manage your contacts privately and efficiently with vCard support"
+    stars: 846
+    category: "Fossify suite (Simple Mobile Tools successors)"
+  - id: com.danilkinkin.buckwheat
+    name: "Buckwheat"
+    summary: "spending budgeter"
+    stars: 824
+    category: "Finance"
+  - id: dev.pranav.applock
+    name: "App Lock"
+    summary: "Secure your sensitive apps with powerful biometric protection using AppLock!"
+    stars: 790
+    category: "Security & privacy"
+  - id: org.nsh07.wikireader
+    name: "WikiReader"
+    summary: "minimal Wikipedia reader"
+    stars: 767
+    category: "News & reading"
+  - id: player.phonograph.plus
+    name: "Phonograph Plus"
+    summary: "local music player"
+    stars: 708
+    category: "Media"
+  - id: com.kaajjo.libresudoku
+    name: "LibreSudoku"
+    summary: "Sudoku app for Android"
+    stars: 703
+    category: "Games"
+  - id: de.kitshn.android
+    name: "kitshn"
+    summary: "Tandoor recipes client"
+    stars: 699
+    category: "Home & lifestyle"
+  - id: org.stendhalgame.client
+    name: "Stendhal"
+    summary: "classic FOSS MMORPG"
+    stars: 695
+    category: "Games"
+  - id: me.timeto.app
+    name: "timeto.me"
+    summary: "goals & time tracker"
+    stars: 684
+    category: "Notes & productivity"
+  - id: com.philkes.notallyx
+    name: "NotallyX"
+    summary: "notes & tasks"
+    stars: 682
+    category: "Notes & productivity"
+  - id: app.simple.peri
+    name: "Peristyle"
+    summary: "wallpaper manager"
+    stars: 666
+    category: "Photos & graphics"
+  - id: ru.aleshin.timeplanner
+    name: "TimePlanner"
+    summary: "day planner"
+    stars: 665
+    category: "Notes & productivity"
+  - id: org.briarproject.briar.android
+    name: "Briar"
+    summary: "P2P encrypted messenger"
+    stars: 651
+    category: "Communication & social"
+  - id: eu.darken.myperm
+    name: "Permission Pilot"
+    summary: "permission audit"
+    stars: 641
+    category: "Security & privacy"
+  - id: com.bnyro.clock
+    name: "Clock You"
+    summary: "clock, alarms & timers"
+    stars: 617
+    category: "Notes & productivity"
+  - id: uk.me.amugofjava.anytime
+    name: "Anytime Podcast Player"
+    summary: "The easy to use open-source podcast player for mobile and tablet"
+    stars: 613
+    category: "Media"
+  - id: ua.com.radiokot.photoprism
+    name: "Gallery for PhotoPrism"
+    summary: "A convenient gallery for PhotoPrism with plenty of useful features"
+    stars: 599
+    category: "Photos & graphics"
+  - id: rs.ruffle
+    name: "Ruffle"
+    summary: "Flash Player emulator"
+    stars: 553
+    category: "Media"
+  - id: com.maksimowiczm.foodyou
+    name: "Food You"
+    summary: "calorie tracker"
+    stars: 506
+    category: "Health & fitness"
+  - id: io.github.sspanak.tt9
+    name: "Traditional T9"
+    summary: "A T9 keyboard inspired by the classic Nokia phones of the 2000s"
+    stars: 483
+    category: "Keyboards & input"
+  - id: xyz.malkki.neostumbler.fdroid
+    name: "NeoStumbler"
+    summary: "wireless network mapping"
+    stars: 463
+    category: "Maps & travel"
+  - id: de.jrpie.android.launcher
+    name: "µLauncher"
+    summary: "minimal launcher"
+    stars: 446
+    category: "System & device"
+  - id: de.schliweb.makeacopy
+    name: "MakeACopy"
+    summary: "document scanner with OCR"
+    stars: 444
+    category: "Photos & graphics"
+  - id: com.jherkenhoff.qalculate
+    name: "Qalculate!"
+    summary: "the famous calculator"
+    stars: 428
+    category: "Office & tools"
+  - id: io.keepalive.android
+    name: "Keep Alive"
+    summary: "safety check-in"
+    stars: 425
+    category: "Office & tools"
+  - id: com.presley.flexify
+    name: "Flexify"
+    summary: "gym tracker"
+    stars: 402
+    category: "Health & fitness"
+  - id: io.github.picocrypt_ng.picocrypt_ng
+    name: "Picocrypt-NG"
+    summary: "simple file encryption"
+    stars: 393
+    category: "Security & privacy"
+  - id: de.dbauer.expensetracker
+    name: "Recurring Expense Tracker"
+    summary: "Keep track of your monthly spending"
+    stars: 383
+    category: "Finance"
+  - id: nz.eloque.foss_wallet
+    name: "FossWallet"
+    summary: "passbook/pkpass wallet"
+    stars: 374
+    category: "Office & tools"
+  - id: com.davidtakac.bura
+    name: "Bura"
+    summary: "minimal forecast"
+    stars: 374
+    category: "Weather"
+  - id: me.proton.android.lumo
+    name: "Lumo"
+    summary: "Proton's private AI assistant"
+    stars: 310
+    category: "AI"
+  - id: de.schildbach.oeffi
+    name: "Öffi"
+    summary: "legendary public transport app"
+    stars: 292
+    category: "Maps & travel"
+  - id: io.olvid.messenger.nogoogle
+    name: "Olvid"
+    summary: "ANSSI-certified French secure messenger"
+    stars: 235
+    category: "Communication & social"

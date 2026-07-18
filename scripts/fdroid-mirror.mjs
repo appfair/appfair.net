@@ -4,7 +4,7 @@
  * F-Droid catalog.
  *
  * Downloads https://f-droid.org/repo/index-v2.json, keeps only the packages
- * listed in fdroid/allowlist.txt (the curated subset: reproducible-build,
+ * listed in fdroid/curated.yaml (the curated subset: reproducible-build,
  * upstream-signed, popular, non-controversial apps), rewrites the repo
  * metadata to identify the App Fair repo, and writes:
  *
@@ -22,8 +22,15 @@
  * index, the mirrors need not be trusted.
  *
  * Only apps built reproducibly and published with their upstream developer
- * signature are eligible for the allowlist, so every APK this index points
- * at is signed by its author, not by the F-Droid build infrastructure.
+ * signature are eligible for the curated list, so every APK this index
+ * points at is signed by its author, not by the F-Droid build
+ * infrastructure.
+ *
+ * App Fair extension: the derived index carries a non-standard top-level
+ * "rank" array — the curated default sort order for catalog UIs, i.e. the
+ * package ids in fdroid/curated.yaml file order (star count, descending).
+ * F-Droid clients parse the index with unknown keys ignored, so the extra
+ * key is invisible to them.
  *
  * Integrity: the script fetches upstream's signed entry.jar, verifies its
  * JAR signature and pins the signing certificate to the published f-droid.org
@@ -43,10 +50,11 @@ import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parse as parseYaml } from 'yaml';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(HERE, '..');
-const ALLOWLIST_PATH = resolve(REPO_ROOT, 'fdroid', 'allowlist.txt');
+const CURATED_PATH = resolve(REPO_ROOT, 'fdroid', 'curated.yaml');
 const OUT_DIR = resolve(REPO_ROOT, 'site', 'public', 'repo');
 
 const UPSTREAM = process.env.FDROID_REPO_URL ?? 'https://f-droid.org/repo';
@@ -92,22 +100,32 @@ function verifyUpstreamJar(jarPath) {
   }
 }
 
-/** Parse allowlist.txt: one package id per line, '#' comments allowed. */
-async function readAllowlist() {
-  const text = await readFile(ALLOWLIST_PATH, 'utf8');
-  const pkgs = [];
-  for (const raw of text.split('\n')) {
-    const line = raw.replace(/#.*$/, '').trim();
-    if (line) pkgs.push(line);
+/**
+ * Parse fdroid/curated.yaml: a top-level `apps:` list of {id, name,
+ * summary, stars, category} entries. Returns the entries in file order,
+ * which defines the catalog rank.
+ */
+async function readCurated() {
+  const doc = parseYaml(await readFile(CURATED_PATH, 'utf8'));
+  const apps = doc?.apps;
+  if (!Array.isArray(apps) || apps.length === 0) {
+    throw new Error(`${CURATED_PATH}: expected a non-empty top-level "apps" list`);
   }
-  const dupes = pkgs.filter((p, i) => pkgs.indexOf(p) !== i);
-  if (dupes.length) throw new Error(`duplicate allowlist entries: ${dupes.join(', ')}`);
-  return pkgs;
+  const ids = apps.map((a, n) => {
+    if (typeof a?.id !== 'string' || !a.id) {
+      throw new Error(`${CURATED_PATH}: entry ${n + 1} has no id`);
+    }
+    return a.id;
+  });
+  const dupes = ids.filter((p, i) => ids.indexOf(p) !== i);
+  if (dupes.length) throw new Error(`duplicate curated entries: ${dupes.join(', ')}`);
+  return apps;
 }
 
 async function main() {
-  const allowlist = await readAllowlist();
-  console.log(`[fdroid-mirror] allowlist: ${allowlist.length} package(s)`);
+  const curated = await readCurated();
+  const allowlist = curated.map((a) => a.id);
+  console.log(`[fdroid-mirror] curated list: ${allowlist.length} app(s)`);
 
   // The signed entry.jar tells us the authoritative name + sha256 of the
   // current index, which lets us verify the 50+ MB index download.
@@ -189,7 +207,12 @@ async function main() {
     releaseChannels: upstream.repo.releaseChannels,
   };
 
-  const index = { repo, packages };
+  // App Fair extension: default catalog sort order (curated.yaml file order,
+  // i.e. star count descending), restricted to the packages actually
+  // published. F-Droid clients ignore unknown index keys.
+  const rank = allowlist.filter((id) => id in packages);
+
+  const index = { repo, packages, rank };
   const body = Buffer.from(JSON.stringify(index));
   await writeFile(join(OUT_DIR, 'index-v2.json'), body);
 

@@ -1,0 +1,13 @@
+{
+  "name": "appfair.net",
+  "private": true,
+  "type": "module",
+  "description": "App Fair catalog site build scripts",
+  "scripts": {
+    "aggregate": "node scripts/aggregate.mjs",
+    "fdroid": "node scripts/fdroid-mirror.mjs"
+  },
+  "dependencies": {
+    "yaml": "^2.8.0"
+  }
+}
