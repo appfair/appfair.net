@@ -46,6 +46,35 @@ jobs:
         # https://appfair.net/appindex.v1.json after deploy).
         run: node scripts/aggregate.mjs
 
+      - name: Derive curated F-Droid repo index
+        # Filters the official f-droid.org index-v2.json down to the curated
+        # subset in fdroid/allowlist.txt. Writes site/public/repo/
+        # {index-v2.json,entry.json}; served at https://appfair.net/repo/
+        # after deploy. APKs are not mirrored — clients fetch them from the
+        # official f-droid.org mirror pool listed in the index.
+        run: node scripts/fdroid-mirror.mjs
+
+      - name: Sign F-Droid repo index
+        # Packages entry.json into entry.jar and signs it with the repo key
+        # (v1 JAR signature, as F-Droid clients require). The PKCS12 keystore
+        # lives in the FDROID_KEYSTORE_P12_B64 secret (base64); see
+        # fdroid/README.md for how to generate and register it.
+        env:
+          FDROID_KEYSTORE_P12_B64: ${{ secrets.FDROID_KEYSTORE_P12_B64 }}
+          FDROID_KEYSTORE_PASS: ${{ secrets.FDROID_KEYSTORE_PASS }}
+        run: |
+          if [ -z "$FDROID_KEYSTORE_P12_B64" ]; then
+            echo "::warning::FDROID_KEYSTORE_P12_B64 secret not set — the" \
+              "F-Droid index ships unsigned (no entry.jar), so F-Droid" \
+              "clients cannot add the repo yet. See fdroid/README.md."
+            exit 0
+          fi
+          printf '%s' "$FDROID_KEYSTORE_P12_B64" | base64 -d \
+            > "$RUNNER_TEMP/fdroid-keystore.p12"
+          FDROID_KEYSTORE="$RUNNER_TEMP/fdroid-keystore.p12" \
+            scripts/fdroid-sign.sh site/public/repo
+          rm -f "$RUNNER_TEMP/fdroid-keystore.p12"
+
       - name: Merge public files into template
         run: |
           if [ -d site/public ]; then

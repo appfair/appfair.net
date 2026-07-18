@@ -27,7 +27,16 @@ that each app's release pipeline ships.
 3. `astro build` reads `site/siteinfo.yaml` and `site/appindex.json` and
    emits a localized landing page at `/{locale}/` plus per-app pages at
    `/{locale}/apps/{repo}/`.
-4. `.github/workflows/aggregate.yml` runs the above hourly on a cron.
+4. `scripts/fdroid-mirror.mjs` derives the **curated F-Droid repository**
+   (see [`fdroid/README.md`](fdroid/README.md)): it filters the official
+   `https://f-droid.org/repo/index-v2.json` down to the ~100 reproducible,
+   upstream-signed, well-known apps in `fdroid/allowlist.txt`, and
+   `scripts/fdroid-sign.sh` signs the result F-Droid-style with the repo
+   key held in GitHub secrets. Served at <https://appfair.net/repo/>
+   (add-repo URL: `https://appfair.net/repo?fingerprint=…`). APK binaries
+   are not mirrored — clients download them from the official f-droid.org
+   mirror pool and verify them against the sha256 in our signed index.
+5. `.github/workflows/aggregate.yml` runs the above hourly on a cron.
 
 ## Layout
 
@@ -35,10 +44,16 @@ that each app's release pipeline ships.
 appfair.net/
 ├── .github/workflows/aggregate.yml   # hourly poll + build + deploy
 ├── scripts/aggregate.mjs             # GH org → site/appindex.json
+├── scripts/fdroid-mirror.mjs         # f-droid.org index → curated site/public/repo/
+├── scripts/fdroid-sign.sh            # entry.json → signed entry.jar
+├── fdroid/
+│   ├── allowlist.txt                 # the curated ~100-app subset
+│   └── README.md                     # criteria, key setup, caveats
 └── site/
     ├── siteinfo.yaml                 # template config (title, host, etc.)
     ├── public/                       # static files copied into the build
-    │   └── appindex.v1.json          # generated copy — served at /appindex.v1.json
+    │   ├── appindex.v1.json          # generated copy — served at /appindex.v1.json
+    │   └── repo/                     # generated F-Droid repo; gitignored
     ├── appindex.json                 # generated build input; gitignored
     └── appland/                      # template; gitignored, fetched in CI
 ```
