@@ -7,6 +7,9 @@ on:
     - cron: '0 * * * *'
   push:
     branches: [main]
+  # appfair.cloud, when a newly notarized iOS version becomes installable.
+  repository_dispatch:
+    types: [marketplace-updated]
   workflow_dispatch:
 
 permissions:

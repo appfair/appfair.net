@@ -1,0 +1,44 @@
+<!doctype html>
+<!--
+Copyright © The Daybrite Project
+SPDX-License-Identifier: MPL-2.0
+
+iOS shows this page (the marketplace-kit file's licenseResolutionURL, served by appfair.cloud)
+when the license of an app App Fair installed has lapsed, with ?account=…&appleItemID=…&appleVersionID=….
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>App Fair: renew an app</title>
+<style>
+  :root { color-scheme: light dark; --fg: #1d1d1f; --muted: #6e6e73; --bg: #fff; --accent: #3d7bf0; }
+  @media (prefers-color-scheme: dark) { :root { --fg: #f5f5f7; --muted: #a1a1a6; --bg: #000; } }
+  body { margin: 0; padding: 32px 20px; background: var(--bg); color: var(--fg);
+         font: 17px/1.45 -apple-system, BlinkMacSystemFont, system-ui, sans-serif; }
+  main { max-width: 34em; margin: 0 auto; }
+  h1 { font-size: 24px; margin: 0 0 12px; }
+  p { margin: 0 0 14px; }
+  .muted { color: var(--muted); font-size: 15px; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>This app needs a new license</h1>
+  <p>App Fair could not renew this app's license, so iOS will not open it until it is renewed.</p>
+  <p>Open <strong>App Fair</strong>, find the app, and tap <strong>Update</strong> or
+     <strong>Install</strong>: that issues a fresh license. If App Fair no longer lists it, the
+     app's developer has stopped distributing it through App Fair.</p>
+  <p class="muted" id="detail"></p>
+  <p class="muted">Questions: <a href="https://appfair.org">appfair.org</a></p>
+</main>
+<script>
+  const q = new URLSearchParams(location.search);
+  const id = q.get("appleItemID");
+  if (id && /^\d+$/.test(id)) {
+    document.getElementById("detail").textContent = "Apple item " + id;
+  }
+</script>
+</body>
+</html>

@@ -14,6 +14,10 @@
  *        https://github.com/appfair/<repo>/releases/latest/download/appindex.json
  *      Forks that haven't published one yet (HTTP 404) are silently skipped.
  *   4. Merges every retrieved `apps[]` entry into a single object.
+ *   4b. Adds the iOS alternative app marketplace: for every app appfair.cloud distributes, the
+ *      matching entry's `platforms.ios` gets `distribution.adp` (Apple item and version ids, the
+ *      package URL on packages.appfair.cloud) and the notarized version, which is what the App
+ *      Fair app installs from. The marketplace being unreachable only leaves those fields out.
  *   5. Writes the result to two locations:
  *        - site/appindex.json            (build input for the appland template)
  *        - site/public/appindex.v1.json  (downloadable artefact, served at
@@ -25,6 +29,7 @@
  * Environment:
  *   GITHUB_TOKEN   (optional)  Bearer token for higher rate limits.
  *   AGGREGATE_ORG  (optional)  Override the GitHub org (default: appfair).
+ *   MARKETPLACE_API (optional) The marketplace API (default: https://api.appfair.cloud).
  */
 
 import { mkdir, writeFile } from 'node:fs/promises';
@@ -46,6 +51,8 @@ const PUBLIC_OUTPUT_PATH = resolve(
   'public',
   'appindex.v1.json',
 );
+
+const MARKETPLACE_API = process.env.MARKETPLACE_API ?? 'https://api.appfair.cloud';
 
 const GH_TOKEN = process.env.GITHUB_TOKEN;
 const API_HEADERS = {
@@ -88,6 +95,49 @@ async function fetchAppIndex(org, repo) {
   const text = await r.text();
   if (!text.trim().startsWith('{')) return null;
   return JSON.parse(text);
+}
+
+/**
+ * Add `distribution.adp` to each app the marketplace distributes. An app is matched by its iOS
+ * bundle identifier; one the catalog has no entry for is left out, since a listing needs the
+ * entry's title, description and icon.
+ */
+export function addMarketplace(merged, marketplace) {
+  const byBundle = new Map();
+  for (const app of merged.apps) {
+    const id = app?.platforms?.ios?.bundleIdentifier;
+    if (id) byBundle.set(id, app);
+  }
+  let added = 0;
+  for (const m of marketplace?.apps ?? []) {
+    const app = byBundle.get(m.bundleId);
+    if (!app) {
+      console.warn(`[aggregate] marketplace: no catalog entry for ${m.bundleId} — not listed`);
+      continue;
+    }
+    const ios = app.platforms.ios;
+    // The notarized version is the one the marketplace installs.
+    ios.version = m.shortVersion;
+    ios.buildNumber = m.bundleVersion;
+    if (m.minimumSystemVersion) ios.minimumSystemVersion = m.minimumSystemVersion;
+    const adp = { appleItemId: m.appleItemId, appleVersionId: m.appleVersionId, url: m.url };
+    if (m.size > 0) adp.size = m.size;
+    if (m.requiredDeviceCapabilities?.length) adp.requiredDeviceCapabilities = m.requiredDeviceCapabilities;
+    ios.distribution = { ...(ios.distribution ?? {}), adp };
+    added++;
+  }
+  return added;
+}
+
+async function fetchMarketplace() {
+  try {
+    const res = await fetch(`${MARKETPLACE_API}/v1/catalog`, { headers: { 'user-agent': 'appfair-aggregator' } });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } catch (err) {
+    console.warn(`[aggregate] marketplace: ${err.message} — iOS marketplace fields left out`);
+    return null;
+  }
 }
 
 async function main() {
@@ -138,6 +188,11 @@ async function main() {
     );
   }
 
+  const marketplace = await fetchMarketplace();
+  if (marketplace) {
+    console.log(`[aggregate] marketplace: ${addMarketplace(merged, marketplace)} iOS app(s) installable`);
+  }
+
   // De-duplicate by slug (last-wins) and sort for deterministic output.
   const byName = new Map();
   for (const a of merged.apps) byName.set(a.name, a);
@@ -153,7 +208,9 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
