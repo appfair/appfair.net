@@ -18,6 +18,9 @@
  *      matching entry's `platforms.ios` gets `distribution.adp` (Apple item and version ids, the
  *      package URL on packages.appfair.cloud) and the notarized version, which is what the App
  *      Fair app installs from. The marketplace being unreachable only leaves those fields out.
+ *   4c. Rewrites site/public/altstore.json, App Fair's AltStore source: every marketplace app that
+ *      appfair-apps' marketplace.yaml marks `altstore: true` gets an AltStore PAL entry for the same
+ *      package, beside the file's hand-written entries.
  *   5. Writes the result to two locations:
  *        - site/appindex.json            (build input for the appland template)
  *        - site/public/appindex.v1.json  (downloadable artefact, served at
@@ -30,11 +33,13 @@
  *   GITHUB_TOKEN   (optional)  Bearer token for higher rate limits.
  *   AGGREGATE_ORG  (optional)  Override the GitHub org (default: appfair).
  *   MARKETPLACE_API (optional) The marketplace API (default: https://api.appfair.cloud).
+ *   MARKETPLACE_YAML (optional) appfair-apps' marketplace.yaml (default: its main branch on GitHub).
  */
 
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parse } from 'yaml';
 
 const ORG = process.env.AGGREGATE_ORG ?? 'appfair';
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -53,6 +58,13 @@ const PUBLIC_OUTPUT_PATH = resolve(
 );
 
 const MARKETPLACE_API = process.env.MARKETPLACE_API ?? 'https://api.appfair.cloud';
+
+// App Fair's AltStore source, served at https://appfair.net/altstore.json: the committed file's
+// entries, plus one for each marketplace app appfair-apps' marketplace.yaml marks `altstore: true`.
+const ALTSTORE_PATH = resolve(REPO_ROOT, 'site', 'public', 'altstore.json');
+const MARKETPLACE_YAML =
+  process.env.MARKETPLACE_YAML ??
+  'https://raw.githubusercontent.com/appfair/appfair-apps/main/marketplace.yaml';
 
 const GH_TOKEN = process.env.GITHUB_TOKEN;
 const API_HEADERS = {
@@ -129,6 +141,82 @@ export function addMarketplace(merged, marketplace) {
   return added;
 }
 
+/** A package path's key in an AltStore `assetURLs`: its file name without the extension. */
+function assetKey(path) {
+  return path.split('/').pop().replace(/\.[^.]*$/, '');
+}
+
+/** `text` with any markup removed, for AltStore's plain-text fields. */
+function plain(text) {
+  return typeof text === 'string' ? text.replace(/<[^>]+>/g, '').trim() : undefined;
+}
+
+/**
+ * App Fair's AltStore source: `base` (the source as committed, whose hand-written entries stay),
+ * with an entry for every marketplace app whose Apple item id is in `flagged`, replacing any entry
+ * with its bundle identifier. Each points AltStore PAL at the package the App Fair marketplace
+ * publishes, through `assetURLs`, AltStore's form for packages hosted on GitHub Releases.
+ */
+export function altStoreSource(base, merged, marketplace, flagged) {
+  const byBundle = new Map();
+  for (const app of merged.apps) {
+    const id = app?.platforms?.ios?.bundleIdentifier;
+    if (id) byBundle.set(id, app);
+  }
+  const apps = [...(base?.apps ?? [])];
+  let listed = 0;
+  for (const m of marketplace?.apps ?? []) {
+    if (!flagged.has(String(m.appleItemId)) || !m.files) continue;
+    const app = byBundle.get(m.bundleId);
+    if (!app) continue;
+    const ios = app.platforms.ios;
+    const assets = app.source?.assets ?? '';
+    const at = (a) => (a?.location ? new URL(a.location, assets).href : undefined);
+    const shots = ios.assets?.screenshots?.en ?? [];
+    const assetURLs = Object.fromEntries(Object.entries(m.files).map(([path, url]) => [assetKey(path), url]));
+    const entry = {
+      name: app.title?.en ?? app.name,
+      bundleIdentifier: m.bundleId,
+      marketplaceID: String(m.appleItemId),
+      developerName: 'The App Fair Project',
+      subtitle: plain(ios.subtitle?.en),
+      localizedDescription: plain(ios.description?.en),
+      iconURL: at(ios.assets?.icon),
+      screenshots: shots.map((s) => ({ imageURL: at(s), width: s.width, height: s.height })).filter((s) => s.imageURL),
+      versions: [
+        {
+          version: m.shortVersion,
+          buildVersion: m.bundleVersion,
+          date: m.date ?? new Date().toISOString(),
+          localizedDescription: plain(app.releaseNotes?.en),
+          downloadURL: m.files['manifest.json'] ?? `${m.url}manifest.json`,
+          assetURLs,
+          size: m.size,
+          minOSVersion: m.minimumSystemVersion,
+        },
+      ],
+    };
+    const i = apps.findIndex((a) => a.bundleIdentifier === m.bundleId);
+    if (i >= 0) apps[i] = entry;
+    else apps.push(entry);
+    listed++;
+  }
+  return { source: { ...base, apps }, listed };
+}
+
+/** The Apple item ids appfair-apps' marketplace.yaml marks `altstore: true`. */
+async function fetchAltStoreFlags() {
+  try {
+    const res = await fetch(MARKETPLACE_YAML, { headers: { 'user-agent': 'appfair-aggregator' } });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const apps = parse(await res.text())?.apps ?? {};
+    return new Set(Object.entries(apps).filter(([, a]) => a?.altstore === true).map(([id]) => String(id)));
+  } catch (err) {
+    console.warn(`[aggregate] altstore: ${err.message} — the AltStore source keeps its committed entries`);
+    return new Set();
+  }
+}
+
 async function fetchMarketplace() {
   try {
     const res = await fetch(`${MARKETPLACE_API}/v1/catalog`, { headers: { 'user-agent': 'appfair-aggregator' } });
@@ -191,6 +279,10 @@ async function main() {
   const marketplace = await fetchMarketplace();
   if (marketplace) {
     console.log(`[aggregate] marketplace: ${addMarketplace(merged, marketplace)} iOS app(s) installable`);
+    const base = JSON.parse(await readFile(ALTSTORE_PATH, 'utf8'));
+    const { source, listed } = altStoreSource(base, merged, marketplace, await fetchAltStoreFlags());
+    await writeFile(ALTSTORE_PATH, JSON.stringify(source, null, 2) + '\n');
+    console.log(`[aggregate] altstore: ${listed} marketplace app(s) in ${ALTSTORE_PATH}`);
   }
 
   // De-duplicate by slug (last-wins) and sort for deterministic output.
